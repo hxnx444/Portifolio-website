@@ -219,6 +219,7 @@ left: 50%;
 }
 
 
+
 #hero h1::after {
     content: '▋';
     display: inline-block;
