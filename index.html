@@ -3,67 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifolio</title>
+    <title>Portifolio | Hannah</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
- <header>
-    <nav>   
-        <ul>
-            <li><a href="#hero">Hero</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+
+    <header>
+        <nav class="navbar"> 
+            <div class="logo">Portifolio</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Hero</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <section id="hero">
+        <div class="hero-content">
+            <h1>HI, IT'S HANNAH</h1>
+            <p class="headsentence">Crafting Digital Experiences with Code & Creativity</p>
+        </div>
+        <p class="scroll">Scroll down to explore my Projects, Skills, and more.</p>
+        <div class="character"></div>
+    </section>
 
-
-        <h1>Hero</h1>
-
-
-    </section>  
-
-
-      <section id="about">
-
-
-        <h1>About</h1>
-
-
+    <section id="about">
+        <div class="abt">
+            <h1>About me</h1>
+            <p>
+                I’m a developer who cares about both how things work and how they feel. 
+                I enjoy turning ideas into clean, functional interfaces — but also making sure they’re intuitive, calm, and human to use. 
+                To me, code isn’t just logic; it’s a tool to create experiences people naturally understand.
+            </p>
+            <p>
+                I’ve worked on projects ranging from desktop applications to web interfaces, focusing on structure, usability, and thoughtful details. 
+                I believe good software shouldn’t feel complicated. It should feel obvious.
+            </p>
+        </div>
+        <div class="character2"></div>
+        <p class="scroll2">I build with curiosity, patience, and intention.</p>
     </section> 
-    
-    
-     <section id="skills">
 
-        <h1>Skills</h1>
+    <section id="skills">
+        <div class="skills">
+            <h1>Skills</h1>
+            <div class="skills-container">
+                <div class="card">
+                    <div class="card-front">Programming</div>
+                    <div class="card-back">
+                        <ul class="skills-list">
+                            <li>Java</li>
+                            <li>Python</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="card">
+                    <div class="card-front">Frontend</div>
+                    <div class="card-back">
+                        <ul class="skills-list">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>React</li>
+                            <li>WordPress</li>
+                            <li>JavaFX</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="card">
+                    <div class="card-front">UI/UX</div>
+                    <div class="card-back">
+                        <ul class="skills-list">
+                            <li>Figma</li>
+                            <li>Adobe XD</li>
+                            <li>Pixel Art</li>
+                            <li>HCI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-front">Backend</div>
+                    <div class="card-back">
+                        <ul class="skills-list">
+                            <li>SQL</li>
+                            <li>Node.js</li>
+                            <li>OOP</li>
+                            <li>Database Management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card soft-skills-card">
+                    <div class="card-front">Soft Skills</div>
+                    <div class="card-back">
+                        <ul class="skills-list">
+                            <li>Problem Solving</li>
+                            <li>Adaptability</li>
+                            <li>Detail Oriented</li>
+                            <li>Patience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="character3"></div>
+        <p class="scroll3">Scroll to view my creations.</p>
     </section> 
-    
-    
+
     <section id="projects">
+        <div class="projects">
+            <h1>Projects</h1>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h2 class="project-name">Library System 📚</h2>
+                    <div class="project-content">
+                        
+                        <p>A JavaFX-based management system designed to track books, members, and operations with database persistence.</p>
+                        <span class="tech-stack">Java • JavaFX • SQLite/MySQL • OOP</span>
+                        <a href="https://github.com/hxnx444/Library-System" class="quest-btn">View Quest</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h2 class="project-name">Hotel Manager 🏨</h2>
+                    <div class="project-content">
 
+                        <p>A comprehensive Java system for managing room reservations, guest check-ins, and automated payments.</p>
+                        <span class="tech-stack">Java • OOP • Management Systems</span>
+                        <a href="https://github.com/hxnx444/hotel-management-system-java" class="quest-btn">View Quest</a>
+                    </div>
+                </div>
 
-        <h1>Projects</h1>
+                <div class="project-card">
+                    <h2 class="project-name">Travel Quest ✈️</h2>
+                    <div class="project-content">
+                        <p>A multi-page responsive travel platform featuring modules for flights, hotels, and car rentals with CSS animations.</p>
+                        <span class="tech-stack">HTML • CSS • JavaScript • Responsive Design</span>
+                        <a href="https://github.com/hxnx444/travel-website" class="quest-btn">View Quest</a>
+                    </div>
+                </div>
 
+                <div class="project-card">
+                    <h2 class="project-name">Aura Vision 🔮</h2>
+                    <div class="project-content">
+                       
+                        <p>A full-stack personal growth platform featuring a vision board, quest-based tasks, and progress tracking.</p>
+                        <span class="tech-stack">React • Node.js • CSS Animations</span>
+                        <a href="https://github.com/hxnx444/aura-vision-board-website" class="quest-btn">View Quest</a>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <div class="character4"></div>
+        <p class="scroll3">Contact me to learn more.</p>
     </section>
 
-   
     <section id="contact">
-
-
-         <h1>Contact</h1>
-
-
-    </section>
-       
-
-   
+        <div class="contact-box">
+            <h1>Contact Me</h1>
+            <p>Ready to start a new quest? <br> Send me a message!</p>
+            <div class="contact-links">
+                <a href="mailto:hanawaeltag12@gmail.com" class="contact-btn">Email 📧</a>
+                <a href="https://github.com/hxnx444" target="_blank" class="contact-btn">GitHub 🐙</a>
+                <a href="https://www.linkedin.com/in/hannah-tag-7b73b43b1" target="_blank" class="contact-btn">LinkedIn 💼</a>
+                <a href="https://www.instagram.com/hxnx444/" target="_blank" class="contact-btn">Instagram 📸</a>
+            </div>
+        </div>
+        </section>
 
 </body>
 </html>
-
