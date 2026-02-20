@@ -333,9 +333,18 @@ line-height: 1.8;
 .hero-nav-btn:hover {
     color: #ffc8dd;
     text-shadow: 0px 0px 8px #fff;
-    transform: scale(1.05); /* Slight scale for feedback */
+    transform: scale(1.05);
+}
+.resume-btn {
+    background: rgba(253, 96, 185, 0.6) !important; 
+    font-size: 14px;
+    padding: 8px 15px;
 }
 
+.resume-btn:hover {
+    background: rgba(253, 96, 185, 0.9) !important;
+    transform: scale(1.05);
+}
 
 section {
 
