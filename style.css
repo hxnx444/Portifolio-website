@@ -1,11 +1,16 @@
 html {
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
 
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 
 .navbar {
@@ -1154,7 +1159,7 @@ justify-content: center;
     box-shadow: none;
 }
 
-
+/* Scroll Reveal Animation */
 .hidden {
     opacity: 0;
     filter: blur(4px);
@@ -1168,17 +1173,17 @@ justify-content: center;
     transform: translateY(0);
 }
 
-
+/* Mobile Responsiveness & Tablet Support */
 @media (max-width: 768px) {
     .navbar {
-        width: 90%;
-        padding: 15px;
+        width: 95%;
+        padding: 10px;
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
     }
     
     .nav-links {
-        gap: 15px 20px; 
+        gap: 10px 15px; 
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -1188,11 +1193,11 @@ justify-content: center;
     }
 
     #hero {
-        padding: 140px 20px 40px 20px; 
+        padding: 160px 20px 40px 20px; /* Increased top padding for stacked navbar */
         justify-content: center;
         align-items: center;
         text-align: center;
-        background-attachment: scroll; 
+        background-attachment: scroll; /* Fixes mobile background jitter */
     }
 
     .hero-content h1 {
