@@ -483,8 +483,7 @@ section {
 
   background-image: url(imgs/skills.png);
 
-  background-attachment: fixed;
-
+ 
   background-size: cover;
 
   background-position: center;
@@ -502,15 +501,23 @@ section {
   box-sizing: border-box;
 
   position: relative;
-display: flex;
 
 
+  display: flex;
 
-justify-content: center;
+  flex-direction: column; 
+   
 
-  align-items: center;
+  justify-content: center; 
+  
 
-  padding: 40px;
+  align-items: center; 
+   
+   
+
+  padding: 40px; 
+
+ 
 }
 
 .skills h1 {
