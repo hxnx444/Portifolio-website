@@ -1240,6 +1240,8 @@ justify-content: center;
     }
 
     #skills {
+        background-size: cover;
+    
         background-attachment: scroll;
         background-position: center;
         background-size: cover;
