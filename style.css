@@ -177,7 +177,10 @@ left: 50%;
 .hero-content {
 
     background-color: transparent;
-	padding: 20px;
+	padding: 10px;
+  max-width: 1050px;
+  text-align: left;
+  
 
     
 }
@@ -194,9 +197,9 @@ left: 50%;
 
   font-weight: 500;
 
-  text-align: center;
+  text-align: left;
 
-  font-size: 60px;
+  font-size: 40px;
 
   
 
@@ -219,7 +222,7 @@ left: 50%;
 
     
     
-
+line-height: 1.8;
     
 }
 
@@ -265,45 +268,74 @@ left: 50%;
 
    1px 
     1px 0px #4a1e5d;
+    
+  text-align: left;
+  line-height: 1.6;
 }
-.scroll{
 
+
+
+#hero-buttons-container {
     position: absolute;
-
-  bottom: 15px;
-
-  left: 50%;
-
-  
-
-  font-family: 'Press Start 2P', cursive;
-
-  color: #fef3fb;
-
-  font-size: 14px;
-
-  
-  text-shadow: 
-
-  2px 2px 0px #4a1e5d, 
-
-    
-    -1px -1px 0px #4a1e5d, 
-   
-
-   1px -1px 0px #4a1e5d,
-
-    
-    -1px 
-   1px 0px #4a1e5d,
-
-   1px 
-    1px 0px #4a1e5d;
-
+    bottom: 30px; 
+    left: 50%;
     transform: translateX(-50%);
-
-  text-align: center;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    gap: 15px; 
 }
+
+
+.github-btn {
+    padding: 10px; 
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pixel-icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%); 
+    image-rendering: pixelated; 
+}
+
+
+
+.hero-nav-btn {
+    background: rgba(253, 96, 185, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid #fefdfd;
+    box-shadow: 0 0 15px rgba(237, 141, 172, 0.5);
+    border-radius: 15px;
+    color: #fef3fb;
+    font-family: 'Pixelify Sans', monospace;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+
+.btn-small {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.hero-nav-btn:hover {
+    color: #ffc8dd;
+    text-shadow: 0px 0px 8px #fff;
+    transform: scale(1.05); /* Slight scale for feedback */
+}
+
 
 section {
 
@@ -496,7 +528,7 @@ section {
 
  image-rendering: crisp-edges;
 
-  min-height: 110vh; 
+  min-height: 100vh; 
 
   box-sizing: border-box;
 
@@ -886,7 +918,7 @@ section {
 
   position: absolute;
 
-  bottom: 20px; 
+  bottom: 0px; 
 
   left: 50%;
 
@@ -900,7 +932,7 @@ section {
 
     width: 150px;
 
-  height: 150px;
+  height: 100px;
 
   image-rendering: pixelated; 
 
