@@ -734,6 +734,18 @@ section {
   text-align: center;
 }
 
+.featured-badge {
+    font-size: 10px;
+    background-color: #ffd700;
+    color: #4a1e5d;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0px #b8860b;
+    display: inline-block;
+}
 
 .project-content {
 
