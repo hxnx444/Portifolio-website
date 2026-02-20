@@ -1219,11 +1219,13 @@ section {
     }
 
      #about, #skills, #projects, #contact {
+
         background-attachment: scroll;
-        padding: 140px 20px 150px 20px; 
+        padding: 60px 20px; 
         min-height: 100vh;
         background-position: center top;
         background-repeat: no-repeat;
+
     }
 
     .abt p {
