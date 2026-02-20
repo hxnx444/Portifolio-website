@@ -1242,7 +1242,7 @@ justify-content: center;
     #skills {
      
     
-        background-attachment: scroll;
+        background-attachment: fixed;
         background-position: justify;
         background-size: cover;
         background-repeat: no-repeat;
