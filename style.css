@@ -1238,6 +1238,12 @@ justify-content: center;
         bottom: 100px;
         font-size: 10px;
     }
+
+    #skills {
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
 }
 
 @media (max-width: 480px) {
