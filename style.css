@@ -1240,12 +1240,17 @@ justify-content: center;
     }
 
     #skills {
-        background-size: cover;
+     
     
         background-attachment: scroll;
-        background-position: center;
+        background-position: justify;
         background-size: cover;
+        background-repeat: no-repeat;
+
+    
+
     }
+
 }
 
 @media (max-width: 480px) {
