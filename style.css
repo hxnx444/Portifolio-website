@@ -5,7 +5,7 @@ scroll-behavior: smooth;
 body {
 
     margin: 0;
- font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
@@ -492,7 +492,7 @@ section {
 
  image-rendering: crisp-edges;
 
-  min-height: 120vh; 
+  min-height: 110vh; 
 
   box-sizing: border-box;
 
@@ -583,7 +583,7 @@ justify-content: center;
 
  image-rendering: crisp-edges;
 
-  min-height: 120vh; 
+  min-height: 110vh; 
 
   box-sizing: border-box;
 
@@ -748,7 +748,7 @@ justify-content: center;
   box-shadow: 0 0 12px rgba(30,64,175,0.4);
 }
 
-.project-card:hover {
+.project-card:hover, .project-card.active {
 
     transform: translateY(-6px); 
 
@@ -756,7 +756,7 @@ justify-content: center;
   
 }
 
-.project-card:hover .project-content {
+.project-card:hover .project-content, .project-card.active .project-content {
 
     max-height: 260px; /* Expands to show text */
 
@@ -773,7 +773,7 @@ justify-content: center;
     background-size: cover;
     background-position: center;
     color: #fef3fb;
-    min-height: 80vh;
+    min-height: 100vh;
     justify-content: center;
     position: relative;
     image-rendering: pixelated;
@@ -1166,4 +1166,20 @@ justify-content: center;
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        width: 95%;
+        padding: 10px 5px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
 }

@@ -2,9 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
-    const skillsSection = document.querySelector('#skills');
+    const aboutSection = document.querySelector('#about');
     const heroTitle = document.querySelector('#hero h1');
     const navLinks = document.querySelectorAll('.nav-links a');
+    const projectCards = document.querySelectorAll('.project-card');
 
     const navObserverOptions = {
         root: null,
@@ -14,14 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-         
-            const shouldBeScrolled = entry.isIntersecting || entry.boundingClientRect.top < 100;
+            const shouldBeScrolled = !entry.isIntersecting && entry.boundingClientRect.top < 0;
             navbar.classList.toggle('scrolled', shouldBeScrolled);
         });
     }, navObserverOptions);
 
-    if (navbar && skillsSection) {
-        navObserver.observe(skillsSection);
+    if (navbar && aboutSection) {
+        navObserver.observe(aboutSection);
     }
 
     
@@ -64,6 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Add click interaction for project cards (better for mobile users)
+    if (projectCards) {
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active class from other cards if you want only one open at a time
+                // projectCards.forEach(c => c !== card && c.classList.remove('active'));
+                card.classList.toggle('active');
+            });
+        });
+    }
 
     
     if (heroTitle) {
