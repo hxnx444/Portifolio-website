@@ -1159,6 +1159,7 @@ justify-content: center;
     box-shadow: none;
 }
 
+
 .hidden {
     opacity: 0;
     filter: blur(4px);
@@ -1172,6 +1173,7 @@ justify-content: center;
     transform: translateY(0);
 }
 
+/* Mobile Responsiveness & Tablet Support */
 @media (max-width: 768px) {
     .navbar {
         width: 95%;
@@ -1191,11 +1193,11 @@ justify-content: center;
     }
 
     #hero {
-        padding: 160px 20px 150px 20px; 
+        padding: 180px 20px 150px 20px; 
         justify-content: center;
         align-items: center;
         text-align: center;
-        background-attachment: scroll;
+        background-attachment: scroll; /* Fixes mobile background jitter */
         background-position: center top;
         background-repeat: no-repeat;
     }
@@ -1209,11 +1211,11 @@ justify-content: center;
         font-size: 16px;
     }
 
-    
+    /* Adjust other sections */
     #about, #skills, #projects, #contact {
         background-attachment: scroll;
-        padding: 80px 20px 150px 20px; 
-        min-height: auto;
+        padding: 140px 20px 150px 20px; 
+        min-height: 100vh;
         background-position: center top;
         background-repeat: no-repeat;
     }
