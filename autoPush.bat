@@ -2,6 +2,9 @@
 
 git add .
 
-git commit -m "auto update"
+git diff --cached --quiet
 
-git push origin main
+if %errorlevel% neq 0 (
+    git commit -m "portfolio update"
+    git push origin main
+)
