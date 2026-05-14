@@ -93,10 +93,9 @@ Full-stack personal growth platform with quests and progress tracking.
 
 ## 📬 Contact
 
-* Email: [hanawaeltag12@gmail.com](mailto:hanawaeltag12@gmail.com)
+* Email: [hanawaeltag12@gmail.com](mailto:hannahtag186@gmail.com)
 * GitHub: https://github.com/hxnx444
-* LinkedIn: https://www.linkedin.com/in/hannah-tag-7b73b43b1
-* Instagram: https://www.instagram.com/hxnx444/
+* Instagram: https://www.instagram.com/hxnx_444/
 
 ---
 
