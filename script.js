@@ -6,22 +6,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('#hero h1');
     const navLinks = document.querySelectorAll('.nav-links a');
     const projectCards = document.querySelectorAll('.project-card');
+    const starsEl = document.getElementById('stars');
 
-    const navObserverOptions = {
-        root: null,
-        threshold: 0,
-        rootMargin: "-100px 0px 0px 0px" 
-    };
+    if (starsEl) {
+        for (let i = 0; i < 80; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 85 + '%';
+            s.style.animationDelay = (Math.random() * 3) + 's';
+            s.style.animationDuration = (2 + Math.random() * 3) + 's';
+            if (Math.random() > 0.85) {
+                s.style.width = s.style.height = '4px';
+                s.style.background = '#a78bfa';
+            }
+            starsEl.appendChild(s);
+        }
+    }
 
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const shouldBeScrolled = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-            navbar.classList.toggle('scrolled', shouldBeScrolled);
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            const skillsSection = document.getElementById('skills');
+            const contactSection = document.getElementById('contact');
+            let makeNavy = false;
+
+            const navRect = navbar.getBoundingClientRect();
+            const navCenter = navRect.top + (navRect.height / 2);
+
+            if (skillsSection && skillsSection.getBoundingClientRect().top <= navCenter && skillsSection.getBoundingClientRect().bottom >= navCenter) {
+                makeNavy = true;
+            }
+            
+            if (contactSection && !makeNavy && contactSection.getBoundingClientRect().top <= navCenter && contactSection.getBoundingClientRect().bottom >= navCenter) {
+                makeNavy = true;
+            }
+
+            navbar.classList.toggle('navy-nav', makeNavy);
         });
-    }, navObserverOptions);
-
-    if (navbar && aboutSection) {
-        navObserver.observe(aboutSection);
     }
 
     
@@ -33,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    const hiddenElements = document.querySelectorAll('.hero-content, .abt, .skills-container, .project-card, .contact-box');
+    const hiddenElements = document.querySelectorAll('.hero-content, .about-glass-box, .skills-container, .page-header, .project-card, .contact-box');
     hiddenElements.forEach(el => {
         el.classList.add('hidden');
         scrollObserver.observe(el);
