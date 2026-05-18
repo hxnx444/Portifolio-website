@@ -12,12 +12,17 @@
 #skills {
   background-image: url("imgs/skills.png");
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll; /* fixed causes blank on iOS */
   position: relative;
-  padding: 100px 20px 80px;
+  padding: 120px 20px 100px;
   overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Dark overlay so the pixel art reads through but cards stay legible */
@@ -293,8 +298,8 @@ body.projects-page .back-nav-btn {
   }
 
   .skills-container {
-    flex-direction: column !important;
-    align-items: center !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     gap: 16px !important;
     margin-top: 0 !important;
     width: 100% !important;
@@ -432,15 +437,14 @@ body.projects-page .back-nav-btn {
   }
 
   .skills-container {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 20px !important;
   }
 
   .skill-glass-card {
-    width: calc(50% - 10px) !important;
-    max-width: 340px !important;
+    width: 100% !important;
+    max-width: none !important;
   }
 }
 
