@@ -854,6 +854,63 @@ body.algorithms-page .navbar.scrolled {
 }
 
 /* =========================================
+   8.6. BREADCRUMB & BACK NAVIGATION
+   ========================================= */
+.breadcrumb-nav {
+  background: rgba(42, 16, 53, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(255, 200, 221, 0.2);
+  padding: 16px 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 14px;
+  color: #cfe8ff;
+}
+
+.breadcrumb-nav a {
+  color: #ffc8dd;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.breadcrumb-nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
+  transform: translateX(-2px);
+}
+
+.back-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(5, 17, 57, 0.5);
+  border: 2px solid rgba(127, 179, 255, 0.3);
+  color: #fef3fb;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-nav-btn:hover {
+  background: rgba(5, 17, 57, 0.8);
+  border-color: rgba(127, 179, 255, 0.8);
+  color: #cfe8ff;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(127, 179, 255, 0.2);
+}
+
+.back-nav-btn:active {
+  transform: translateX(-1px);
+}
+
+/* =========================================
    8.5. PAGE BACKGROUNDS
    ========================================= */
 body.algorithms-page,
