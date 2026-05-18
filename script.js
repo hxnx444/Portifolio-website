@@ -78,23 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             navbar.classList.toggle('navy-nav', makeNavy);
+
+            // Update active nav link based on scroll position
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.remove('active');
+                if (current && a.getAttribute('href') === `#${current}`) {
+                    a.classList.add('active');
+                }
+            });
         });
     }
-
-    
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    const hiddenElements = document.querySelectorAll('.hero-content, .about-glass-box, .skills-container, .page-header, .project-card, .contact-box');
-    hiddenElements.forEach(el => {
-        el.classList.add('hidden');
-        scrollObserver.observe(el);
-    });
 
   
     navLinks.forEach(anchor => {
@@ -105,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (menuToggle && menuToggle.classList.contains('is-active')) {
                 menuToggle.setAttribute('aria-expanded', 'false');
                 menuToggle.classList.remove('is-active');
-                if (navLinksContainer) navLinksContainer.classList.remove('active');
+                if (navLinksContainer) {
+                    navLinksContainer.classList.remove('active');
+                    navLinksContainer.style.maxHeight = '0px';
+                }
             }
 
             if (targetId && targetId.startsWith('#')) {
@@ -117,35 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     const elementPosition = targetSection.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.scrollY - navHeight;
 
+                    // Update URL hash without jumping to fix back button behavior
+                    history.pushState(null, null, targetId);
                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                     return;
                 }
 
                 // If the section doesn't exist on this page, navigate to index.html with the hash
                 const homeUrl = './index.html' + targetId;
-                document.body.classList.add('fade-out');
-                setTimeout(() => { window.location.href = homeUrl; }, 300);
+                window.location.href = homeUrl;
             }
         });
-    });
-
-    // Observe sections to update active nav link
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const id = entry.target.id;
-            const link = document.querySelector(`.nav-links a[href="#${id}"]`);
-            if (entry.isIntersecting) {
-                if (link) link.classList.add('active');
-            } else {
-                if (link) link.classList.remove('active');
-            }
-        });
-    }, { threshold: 0.45 });
-
-    // Register sections for observation (only those that have nav links)
-    document.querySelectorAll('section[id]').forEach(sec => {
-        const hasNav = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
-        if (hasNav) sectionObserver.observe(sec);
     });
 
     // If page loaded with a hash, scroll to it after initial animations
@@ -172,42 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    
-    if (heroTitle) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        let i = 0;
 
-        const type = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 100); 
-            }
-        };
-        setTimeout(type, 500); 
-    }
-
-    // Smooth Page Transitions
-    const transitionLinks = document.querySelectorAll('a[href]:not([href^="#"]):not([href^="mailto:"]):not([target="_blank"]):not([download])');
-    
-    transitionLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = this.href;
-            
-            document.body.classList.add('fade-out');
-            
-            setTimeout(() => {
-                window.location.href = target;
-            }, 400); // Matches the CSS transition duration
-        });
-    });
-});
-
-// Handle back button caching (BFCache)
-window.addEventListener('pageshow', (event) => {
-    if (event.persisted || document.body.classList.contains('fade-out')) {
-        document.body.classList.remove('fade-out');
-    }
+    // Trigger scroll event on load to set initial nav state
+    window.dispatchEvent(new Event('scroll'));
 });

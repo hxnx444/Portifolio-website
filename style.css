@@ -24,8 +24,6 @@ body {
   line-height: 1.6;
   color: #fef3fb;
   overflow-x: hidden;
-  opacity: 0;
-  animation: pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   background-color: transparent;
 }
 
@@ -46,20 +44,6 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-.fade-out {
-  animation: pageLeave 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-}
-
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes pageLeave {
-  from { opacity: 1; transform: translateY(0); filter: blur(0); }
-  to { opacity: 0; transform: translateY(-20px); filter: blur(5px); }
-}
-
 section {
   min-height: 100vh;
   padding: 120px 20px;
@@ -68,19 +52,6 @@ section {
   align-items: center;
   box-sizing: border-box;
   scroll-margin-top: 80px;
-}
-
-.hidden {
-  opacity: 0;
-  filter: blur(4px);
-  transform: translateY(40px);
-  transition: opacity var(--anim-slow) var(--easing-snappy), transform var(--anim-slow) var(--easing-snappy), filter var(--anim-slow) var(--easing-snappy);
-}
-
-.show {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
 }
 
 /* =========================================
@@ -182,17 +153,6 @@ body.algorithms-page .navbar.scrolled {
   border-radius: 8px;
   box-shadow: 0 6px 14px rgba(95, 140, 255, 0.06);
   transform: translateY(-2px) scale(1.03);
-}
-
-/* Smooth transition tuning for page enter/leave */
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(10px); filter: blur(3px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes pageLeave {
-  from { opacity: 1; transform: translateY(0); filter: blur(0); }
-  to { opacity: 0; transform: translateY(-8px); filter: blur(4px); }
 }
 
 /* =========================================
@@ -335,6 +295,42 @@ body.algorithms-page .navbar.scrolled {
   box-shadow: 0 0 15px rgba(127, 179, 255, 0.3);
 }
 
+/* Back to Projects Button on subpages */
+.back-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  color: #fef3fb;
+  background: rgba(5, 17, 57, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(127, 179, 255, 0.3);
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.back-nav-btn:hover {
+  background: rgba(5, 17, 57, 0.9);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: rgba(127, 179, 255, 0.8);
+  box-shadow: 0 5px 15px rgba(127, 179, 255, 0.2);
+  text-decoration: none;
+}
+
+.page-category-descriptor {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1rem;
+  color: #cfe8ff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /* =========================================
    4. HERO SECTION
    ========================================= */
@@ -374,15 +370,6 @@ body.algorithms-page .navbar.scrolled {
   font-size: 26px;        /* was 36px */
   line-height: 1.8;
   text-shadow: 3px 3px 0px #1d0554;
-}
-
-#hero h1::after {
-  content: "▋";
-  display: inline-block;
-  margin-left: 8px;
-  animation: blink 1s step-end infinite;
-  color: #fef3fb;
-  text-shadow: 2px 2px 0px #4a1e5d;
 }
 
 .headsentence {
@@ -438,6 +425,12 @@ body.algorithms-page .navbar.scrolled {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .about-glass-box {
+    padding: 40px 30px;
+  }
 }
 
 .about-glass-box h1 {
@@ -853,62 +846,6 @@ body.algorithms-page .navbar.scrolled {
   gap: 20px;
 }
 
-/* =========================================
-   8.6. BREADCRUMB & BACK NAVIGATION
-   ========================================= */
-.breadcrumb-nav {
-  background: rgba(42, 16, 53, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 2px solid rgba(255, 200, 221, 0.2);
-  padding: 16px 20px;
-  margin-bottom: 40px;
-  border-radius: 10px;
-  font-family: "Pixelify Sans", monospace;
-  font-size: 14px;
-  color: #cfe8ff;
-}
-
-.breadcrumb-nav a {
-  color: #ffc8dd;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-block;
-}
-
-.breadcrumb-nav a:hover {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255, 200, 221, 0.4);
-  transform: translateX(-2px);
-}
-
-.back-nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: rgba(5, 17, 57, 0.5);
-  border: 2px solid rgba(127, 179, 255, 0.3);
-  color: #fef3fb;
-  font-family: "Pixelify Sans", monospace;
-  font-size: 13px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.back-nav-btn:hover {
-  background: rgba(5, 17, 57, 0.8);
-  border-color: rgba(127, 179, 255, 0.8);
-  color: #cfe8ff;
-  transform: translateX(-3px);
-  box-shadow: 0 4px 12px rgba(127, 179, 255, 0.2);
-}
-
-.back-nav-btn:active {
-  transform: translateX(-1px);
-}
 
 /* =========================================
    8.5. PAGE BACKGROUNDS
@@ -972,16 +909,6 @@ body.algorithms-page .page-header .breadcrumb {
   font-size: 0.9rem;
   color: #94a3b8;
   margin-bottom: 1rem;
-}
-
-body.algorithms-page .page-header .breadcrumb a {
-  color: #7fb3ff;
-  text-decoration: none;
-}
-
-body.algorithms-page .page-header .breadcrumb a:hover {
-  text-decoration: underline;
-  color: #cfe8ff;
 }
 
 body.algorithms-page .page-header h1 {
@@ -1239,16 +1166,6 @@ body.algorithms-page .card-btn.secondary:hover {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-
-@keyframes jump {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-40px); }
-}
-
-@keyframes jump2 {
-  0%, 100% { transform: translateX(-50%) translateY(-35px); }
-  50% { transform: translateX(-50%) translateY(-5px); }
-}
 @keyframes fadeUpDown {
   0%, 100% { opacity: 0.4; transform: translateY(0); }
   50%       { opacity: 1;   transform: translateY(5px); }
@@ -1257,102 +1174,41 @@ body.algorithms-page .card-btn.secondary:hover {
 /* =========================================
    11. MEDIA QUERIES
    ========================================= */
-@media (max-width: 1024px) {
-  .navbar {
-    width: 90%;
-    max-width: 90%;
-  }
-
-  .hero-content h1 {
-    font-size: 24px;
-  }
-
-  .about-glass-box {
-    padding: 40px 60px 40px 40px;
-    width: 95%;
-  }
-
-  .about-glass-box h1 {
-    font-size: 24px;
-  }
-
-  .skills h1 {
-    font-size: 24px;
-  }
-
-  .skill-glass-card {
-    width: 240px;
-  }
-}
-
 @media (max-width: 768px) {
   .navbar {
-    width: 92%;
-    padding: 8px;
-    flex-direction: column;
-    gap: 5px;
-    top: 12px;
-  }
-
-  .navbar .logo {
-    font-size: 20px;
-    padding: 8px;
+    width: 95%;
+    padding: 15px 20px;
   }
 
   .nav-links {
-    gap: 8px;
+    gap: 10px 15px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .nav-links a {
-    font-size: 13px;
-    padding: 6px 10px;
+    font-size: 14px;
   }
 
   #hero {
     display: flex;
     flex-direction: column;
-    padding: 140px 20px 100px 20px;
+    padding: 180px 20px 120px 20px;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-attachment: scroll;
     background-position: center top;
     background-repeat: no-repeat;
-    gap: 1.5rem;
-  }
-
-  .hero-content {
-    padding: 30px;
-    max-width: 100%;
   }
 
   .hero-content h1 {
-    font-size: 22px;
-    line-height: 1.5;
-    text-shadow: 2px 2px 0px #1d0554;
+    font-size: 32px;
+    line-height: 1.4;
   }
 
   .headsentence {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 15px;
-  }
-
-  #hero-buttons-container {
-    gap: 10px;
-    margin-top: 25px;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .hero-nav-btn {
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    padding: 12px 20px;
+    font-size: 16px;
   }
 
   #about,
@@ -1360,321 +1216,47 @@ body.algorithms-page .card-btn.secondary:hover {
   #projects,
   #contact {
     background-attachment: scroll;
-    padding: 50px 18px;
-    min-height: auto;
+    padding: 60px 20px;
+    min-height: 100vh;
     background-position: center top;
     background-repeat: no-repeat;
   }
 
-  .about-glass-box {
-    padding: 30px 25px;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 12px;
-  }
-
-  .about-glass-box h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .about-text-blocks {
-    gap: 15px;
-  }
-
-  .readable-text {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .skills h1 {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-
-  .skills-container {
-    gap: 20px;
-    max-width: 100%;
-    margin: 30px auto 0;
-  }
-
-  .skill-glass-card {
-    width: 100%;
-    max-width: 280px;
-    padding: 25px 20px;
-  }
-
-  .skill-title {
-    font-size: 12px;
-    margin-bottom: 15px;
-  }
-
-  .skills-list {
+  .abt p {
     font-size: 13px;
   }
 
   .project-card {
     width: 100%;
-    max-width: 100%;
-    padding: 15px;
-  }
-
-  .project-name {
-    font-size: 16px;
-  }
-
-  .project-content {
-    max-height: 200px;
-    font-size: 13px;
-  }
-
-  .contact-box {
-    padding: 30px 20px;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .contact-box h1 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-
-  .contact-box p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-
-  .contact-links {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .contact-btn {
-    padding: 12px 18px;
-    font-size: 11px;
-  }
-
-  .breadcrumb-nav {
-    padding: 12px 15px;
-    font-size: 12px;
-    margin-bottom: 25px;
-    border-radius: 8px;
-  }
-
-  .back-nav-btn {
-    padding: 10px 14px;
-    font-size: 12px;
-    margin-bottom: 15px;
   }
 
   .character,
   .character2,
   .character3,
   .character4 {
-    width: 100px;
-    height: 120px;
-    bottom: 20px;
+    width: 80px;
+    height: 80px;
+    bottom: 10px;
   }
 
   .scroll,
   .scroll2,
   .scroll3 {
-    bottom: 80px;
-    font-size: 9px;
+    bottom: 100px;
+    font-size: 10px;
   }
 }
 
 @media (max-width: 600px) {
-  .navbar {
-    width: 94%;
-    top: 10px;
-    padding: 6px;
-  }
-
-  .navbar .logo {
-    font-size: 16px;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    padding: 5px 8px;
-  }
-
   .category-grid-container {
     grid-template-columns: 1fr;
     gap: 15px;
-    max-width: 100%;
-    padding: 15px;
+    margin-top: 0;
+    padding: 10px;
   }
 
   .category-card {
-    padding: 20px 15px;
-  }
-
-  .card-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-  }
-
-  .card-title {
-    font-size: 14px;
-    margin: 10px 0 8px;
-  }
-
-  .card-desc {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .hero-content h1 {
-    font-size: 18px;
-    line-height: 1.4;
-  }
-
-  .headsentence {
-    font-size: 12px;
-  }
-
-  .about-glass-box {
-    padding: 25px 20px;
-  }
-
-  .about-glass-box h1 {
-    font-size: 18px;
-  }
-
-  .skills h1 {
-    font-size: 18px;
-  }
-
-  .skill-glass-card {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .skill-title {
-    font-size: 11px;
-  }
-
-  .skills-list {
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  .project-card {
-    max-width: 100%;
-  }
-
-  .project-name {
-    font-size: 14px;
-  }
-
-  .project-content {
-    max-height: 180px;
-    font-size: 12px;
-  }
-
-  .page-header h1 {
-    font-size: 18px !important;
-  }
-
-  .page-header .subtitle {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  section {
-    padding: 80px 16px;
-  }
-
-  .navbar {
-    width: 96%;
-    top: 8px;
-  }
-
-  .navbar .logo {
-    font-size: 14px;
-  }
-
-  .nav-links a {
-    font-size: 11px;
-    padding: 4px 6px;
-  }
-
-  #hero {
-    padding: 120px 16px 80px 16px;
-  }
-
-  .hero-content {
-    padding: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 16px;
-    line-height: 1.3;
-  }
-
-  .headsentence {
-    font-size: 11px;
-    line-height: 1.4;
-  }
-
-  .hero-nav-btn {
-    font-size: 12px;
-    padding: 10px 16px;
-  }
-
-  .about-glass-box {
-    padding: 20px 18px;
-    width: 100%;
-  }
-
-  .about-glass-box h1 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-
-  .readable-text {
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
-  .skills h1 {
-    font-size: 16px;
-    margin-bottom: 25px;
-  }
-
-  .skills-container {
-    gap: 15px;
-  }
-
-  .skill-glass-card {
-    width: 100%;
-    padding: 20px 15px;
-  }
-
-  .skill-title {
-    font-size: 10px;
-    margin-bottom: 12px;
-  }
-
-  .skills-list {
-    font-size: 11px;
-    line-height: 1.4;
-  }
-
-  .skills-list li {
-    margin-bottom: 8px;
-  }
-
-  .category-grid-container {
-    padding: 12px;
-  }
-
-  .category-card {
-    padding: 18px 12px;
+    padding: 20px 10px;
   }
 
   .card-icon {
@@ -1687,121 +1269,33 @@ body.algorithms-page .card-btn.secondary:hover {
   }
 
   .card-desc {
-    font-size: 11px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 24px;
   }
 
-  .contact-box {
-    padding: 25px 18px;
+  .nav-links a {
+    font-size: 12px;
   }
 
   .contact-box h1 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-
-  .contact-box p {
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 20px;
   }
 
   .contact-links {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    width: 100%;
   }
 
   .contact-btn {
     width: 100%;
-    padding: 11px 16px;
-    font-size: 10px;
-  }
-
-  .breadcrumb-nav {
-    padding: 10px 12px;
-    font-size: 11px;
-    margin-bottom: 20px;
-  }
-
-  .back-nav-btn {
-    padding: 8px 12px;
-    font-size: 11px;
-    margin-bottom: 12px;
-  }
-
-  .page-header {
-    margin-bottom: 25px;
-  }
-
-  .page-header h1 {
-    font-size: 16px !important;
-    line-height: 1.3;
-  }
-
-  .page-header .subtitle {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .breadcrumb {
-    font-size: 11px;
-  }
-
-  .character,
-  .character2,
-  .character3,
-  .character4 {
-    width: 80px;
-    height: 100px;
-    bottom: 15px;
-  }
-}
-
-@media (max-width: 360px) {
-  section {
-    padding: 70px 12px;
-  }
-
-  .navbar {
-    width: 98%;
-  }
-
-  .navbar .logo {
-    font-size: 12px;
-  }
-
-  .nav-links a {
-    font-size: 10px;
-  }
-
-  .hero-content h1 {
-    font-size: 14px;
-  }
-
-  .headsentence {
-    font-size: 10px;
-  }
-
-  .about-glass-box h1,
-  .skills h1,
-  .contact-box h1,
-  .page-header h1 {
-    font-size: 14px;
-  }
-
-  .readable-text,
-  .card-desc {
-    font-size: 12px;
-  }
-
-  .skill-glass-card {
-    padding: 15px 12px;
-  }
-
-  .skill-title {
-    font-size: 9px;
-  }
-
-  .skills-list {
-    font-size: 10px;
+    box-sizing: border-box;
+    min-width: unset;
   }
 }
 
