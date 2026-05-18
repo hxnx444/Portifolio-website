@@ -83,33 +83,66 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            
+
             // Close mobile menu if open when a link is clicked
             if (menuToggle && menuToggle.classList.contains('is-active')) {
                 menuToggle.setAttribute('aria-expanded', 'false');
                 menuToggle.classList.remove('is-active');
                 if (navLinksContainer) navLinksContainer.classList.remove('active');
             }
-            
-          
-            if (targetId.startsWith('#')) {
+
+            if (targetId && targetId.startsWith('#')) {
                 e.preventDefault();
                 const targetSection = document.querySelector(targetId);
 
                 if (targetSection) {
                     const navHeight = navbar ? navbar.offsetHeight : 0;
-                   
                     const elementPosition = targetSection.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.scrollY - navHeight;
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    return;
                 }
+
+                // If the section doesn't exist on this page, navigate to index.html with the hash
+                const homeUrl = './index.html' + targetId;
+                document.body.classList.add('fade-out');
+                setTimeout(() => { window.location.href = homeUrl; }, 300);
             }
         });
     });
+
+    // Observe sections to update active nav link
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const id = entry.target.id;
+            const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+            if (entry.isIntersecting) {
+                if (link) link.classList.add('active');
+            } else {
+                if (link) link.classList.remove('active');
+            }
+        });
+    }, { threshold: 0.45 });
+
+    // Register sections for observation (only those that have nav links)
+    document.querySelectorAll('section[id]').forEach(sec => {
+        const hasNav = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+        if (hasNav) sectionObserver.observe(sec);
+    });
+
+    // If page loaded with a hash, scroll to it after initial animations
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        setTimeout(() => {
+            const target = document.querySelector(hash);
+            if (target) {
+                const navHeight = navbar ? navbar.offsetHeight : 0;
+                const offset = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+        }, 450);
+    }
 
     // Add click interaction for project cards (better for mobile users)
     if (projectCards) {
@@ -136,5 +169,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         setTimeout(type, 500); 
+    }
+
+    // Smooth Page Transitions
+    const transitionLinks = document.querySelectorAll('a[href]:not([href^="#"]):not([href^="mailto:"]):not([target="_blank"]):not([download])');
+    
+    transitionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.href;
+            
+            document.body.classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = target;
+            }, 400); // Matches the CSS transition duration
+        });
+    });
+});
+
+// Handle back button caching (BFCache)
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted || document.body.classList.contains('fade-out')) {
+        document.body.classList.remove('fade-out');
     }
 });
