@@ -17,9 +17,14 @@
   background-attachment: scroll; /* fixed causes blank on iOS */
   position: relative;
   padding: 120px 20px 100px;
-  overflow: hidden;
   width: 100%;
-  min-height: 100vh;
+  
+  /* --- Height & Overflow Fixes --- */
+  min-height: 100vh; /* Fallback for older browsers */
+  min-height: 100dvh; /* Adapts to mobile URL bars */
+  height: auto; /* Forces the container to grow with stacked cards */
+  overflow: visible; /* Prevents cards from getting chopped off */
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -289,6 +294,11 @@ body.projects-page .back-nav-btn {
   #skills {
     padding: 80px 16px 60px !important;
     background-attachment: scroll !important;
+    
+    /* --- Mobile height expansion fix --- */
+    height: auto !important; 
+    min-height: 100dvh !important;
+    overflow: visible !important;
   }
 
   .skills h1 {

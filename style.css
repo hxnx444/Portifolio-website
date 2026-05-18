@@ -661,15 +661,25 @@ body.algorithms-page .navbar.scrolled {
   background-image: url("imgs/skills.png");
   background-size: cover;
   background-position: center;
-  image-rendering: crisp-edges;
-  min-height: 100vh;
+  background-repeat: no-repeat;
+  
+  /* You likely have this as 'fixed' in style.css for a cool desktop parallax effect. 
+     Keep it fixed here, as your mobile-patch file will change it to 'scroll' for iOS later! */
+  background-attachment: fixed; 
+  
+  position: relative;
+  padding: 120px 20px 100px;
+  width: 100%;
+  
+  /* --- THE FIX: Replaced strict height and hidden overflow --- */
+  min-height: 100vh; 
+  height: auto; 
+  overflow: visible; 
+  /* ----------------------------------------------------------- */
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 100px 20px;
-  position: relative;
-  width: 100%;
 }
 
 .skills h1 {
