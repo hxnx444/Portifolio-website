@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-  
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -161,4 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Trigger scroll event on load to set initial nav state
     window.dispatchEvent(new Event('scroll'));
+    // ── Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });
