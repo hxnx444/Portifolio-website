@@ -1,5 +1,13 @@
 /* =====================================================
-   HANNAH'S PORTFOLIO — style.css  (consolidated)
+   HANNAH'S PORTFOLIO — style.css  (FIXED)
+   Works with existing index.html as-is.
+   No extra HTML elements required.
+
+   BACKGROUND ALTERNATION:
+   - #hero   → hero.png       (purple pixel town)
+   - #about  → hero.png       (same, continuous feel)
+   - #skills → pixel-sky      (body bg shows through)
+   - #contact→ contact-bg.png
 
    TABLE OF CONTENTS
    -----------------
@@ -12,16 +20,14 @@
     7.  Hero Section
     8.  About Section
     9.  Skills Section
-   10.  Projects Section (index)
-   11.  Contact Section          ← UNCHANGED from original
-   12.  Sub-pages (Projects / Algorithms)
+   10.  Projects Section
+   11.  Contact Section
+   12.  Sub-pages
    13.  Scroll Utilities & Reveal
    14.  Stars & City Decorations
    15.  Cursor Trail
-   16.  Media Queries — Tablet  (≤ 900px)
-   17.  Media Queries — Mobile  (≤ 768px)
-   18.  Media Queries — Small   (≤ 600px / ≤ 480px / ≤ 400px)
-   19.  Accessibility
+   16.  Media Queries
+   17.  Accessibility
    ===================================================== */
 
 
@@ -29,7 +35,6 @@
    1. CSS VARIABLES & ROOT
    ===================================================== */
 :root {
-  /* ── Colors ── */
   --color-text:        #fef3fb;
   --color-accent:      #ffc8dd;
   --color-accent-alt:  #cfe8ff;
@@ -39,32 +44,24 @@
   --color-border-pink: rgba(255, 200, 221, 0.30);
   --color-border-blue: rgba(127, 179, 255, 0.30);
 
-  /* ── Pixel-sky palette (shared by Skills / Projects bg) ── */
-  --sky-deep:          #050816;
-  --sky-mid:           #09122b;
-  --sky-blue:          #10265a;
-  --sky-bright:        #173f89;
-  --sky-bottom:        #0a1438;
-  --grid-blue:         rgba(127, 179, 255, 0.055);
-  --aurora-a:          rgba(125, 211, 252, 0.17);
-  --aurora-b:          rgba(196, 181, 253, 0.14);
-  --aurora-c:          rgba(45,  212, 191, 0.07);
+  --sky-deep:   #050816;
+  --sky-mid:    #09122b;
+  --sky-blue:   #10265a;
+  --sky-bright: #173f89;
+  --grid-blue:  rgba(127, 179, 255, 0.055);
 
-  /* ── Timing ── */
-  --t-instant:  80ms;
-  --t-fast:    160ms;
-  --t-mid:     280ms;
-  --t-slow:    480ms;
-  --t-reveal:  560ms;
-  --t-page:    420ms;
+  --t-instant: 80ms;
+  --t-fast:   160ms;
+  --t-mid:    280ms;
+  --t-slow:   480ms;
+  --t-reveal: 560ms;
+  --t-page:   420ms;
 
-  /* ── Easings ── */
-  --ease-snap:   cubic-bezier(0.00, 0.00, 0.20, 1.00);
-  --ease-out:    cubic-bezier(0.16, 1.00, 0.30, 1.00);
-  --ease-pop:    cubic-bezier(0.34, 1.56, 0.64, 1.00);
-  --ease-io:     cubic-bezier(0.45, 0.00, 0.55, 1.00);
+  --ease-snap: cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --ease-out:  cubic-bezier(0.16, 1.00, 0.30, 1.00);
+  --ease-pop:  cubic-bezier(0.34, 1.56, 0.64, 1.00);
+  --ease-io:   cubic-bezier(0.45, 0.00, 0.55, 1.00);
 
-  /* ── Nav ── */
   --nav-duration: 360ms;
   --nav-ease:     cubic-bezier(0.20, 0.90, 0.20, 1.00);
 }
@@ -75,13 +72,10 @@
    ===================================================== */
 html {
   scroll-behavior: smooth;
-  background: radial-gradient(circle at top, rgba(173,116,255,0.16), transparent 25%), #0e0b1f;
   color-scheme: dark;
 }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -92,6 +86,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+  /* Pixel-sky — shows through skills/projects sections */
   background-color: #0e0b1f;
   background-image: url("imgs/pixellab-ery-minimal-pixel-art-sky-back-1771496997042.png");
   background-size: cover;
@@ -101,12 +96,15 @@ body {
   image-rendering: pixelated;
 }
 
-a                { color: inherit; text-decoration: none; }
-a, button        { transition: color var(--t-fast) var(--ease-snap),
-                               transform var(--t-mid) var(--ease-pop),
-                               background-color var(--t-mid) var(--ease-out),
-                               border-color var(--t-mid) var(--ease-out),
-                               box-shadow var(--t-mid) var(--ease-out); }
+a       { color: inherit; text-decoration: none; }
+a, button {
+  transition:
+    color            var(--t-fast) var(--ease-snap),
+    transform        var(--t-mid)  var(--ease-pop),
+    background-color var(--t-mid)  var(--ease-out),
+    border-color     var(--t-mid)  var(--ease-out),
+    box-shadow       var(--t-mid)  var(--ease-out);
+}
 
 a:hover,
 a:focus-visible,
@@ -155,23 +153,9 @@ section {
 /* =====================================================
    4. KEYFRAMES
    ===================================================== */
-
-/* ── Background decorations ── */
 @keyframes gridMove {
   from { transform: translateY(0);    }
   to   { transform: translateY(30px); }
-}
-
-@keyframes auroraDrift {
-  0%   { transform: translateX(-2%) translateY(0%);   }
-  100% { transform: translateX(2%)  translateY(-3%);  }
-}
-
-/* ── Page entrance ── */
-@keyframes pixelSlideUp {
-  0%   { opacity: 0; transform: translateY(20px); filter: blur(1.5px); }
-  60%  { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pixelFadeIn {
@@ -179,7 +163,6 @@ section {
   to   { opacity: 1; }
 }
 
-/* ── Stars ── */
 @keyframes twinkle {
   0%, 100% { opacity: 0.15; transform: scale(1);   }
   50%       { opacity: 1;   transform: scale(1.5); }
@@ -191,7 +174,6 @@ section {
   100% { opacity: 0; transform: translateX(90px) translateY(35px); }
 }
 
-/* ── UI ── */
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.35; transform: translateX(-50%) translateY(0);   }
   50%       { opacity: 0.90; transform: translateX(-50%) translateY(7px); }
@@ -209,26 +191,46 @@ section {
 
 @keyframes winFlicker {
   0%, 90%, 100% { opacity: var(--win-base, 0.7); }
-  92%            { opacity: 0.10; }
-  94%            { opacity: var(--win-base, 0.7); }
-  96%            { opacity: 0.20; }
+  92%           { opacity: 0.10; }
+  94%           { opacity: var(--win-base, 0.7); }
+  96%           { opacity: 0.20; }
 }
 
-/* ── Scroll-reveal ── */
 @keyframes forceShow {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ── Cursor trail ── */
 @keyframes pixelFade {
   0%   { opacity: 0.7; transform: scale(1);   }
   100% { opacity: 0;   transform: scale(0.3); }
 }
 
-/* ── Hero scroll indicator ── */
-@keyframes fadeUpDown {
-  0%, 100% { opacity: 0.4; transform: translateY(0);   }
-  50%       { opacity: 1.0; transform: translateY(5px); }
+@keyframes blinkCaret { 50% { opacity: 0; } }
+
+/* Floating pixel decoration keyframes */
+@keyframes floatPixel {
+  0%, 100% { transform: translateY(0px) rotate(0deg);   opacity: 0.6; }
+  33%       { transform: translateY(-8px) rotate(90deg); opacity: 0.9; }
+  66%       { transform: translateY(4px) rotate(180deg); opacity: 0.5; }
+}
+
+@keyframes floatPixelB {
+  0%, 100% { transform: translateY(0px) translateX(0px);    opacity: 0.4; }
+  50%       { transform: translateY(-12px) translateX(5px); opacity: 0.8; }
+}
+
+@keyframes runeFloat {
+  0%, 100% { opacity: 0.20; transform: translateY(0)    scale(1);    }
+  50%       { opacity: 0.55; transform: translateY(-6px) scale(1.05); }
+}
+
+@keyframes cornerPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1);    }
+  50%       { opacity: 0.90; transform: scale(1.15); }
+}
+
+@keyframes heroStarDrift {
+  /* Used for the JS-injected star layer inside hero/about */
 }
 
 
@@ -254,12 +256,10 @@ section {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--color-border-pink);
   border-radius: 14px;
-  /* transitions */
   transition:
     background   var(--t-mid) var(--ease-out),
     border-color var(--t-mid) var(--ease-out),
     box-shadow   var(--t-mid) var(--ease-out);
-  /* entrance */
   animation: pixelFadeIn var(--t-page) var(--ease-out) both;
   animation-delay: 60ms;
   will-change: opacity;
@@ -293,7 +293,6 @@ body.algorithms-page .navbar.scrolled {
   border-color: rgba(127,179,255,0.55);
 }
 
-/* Logo */
 .navbar .logo {
   display: flex;
   align-items: center;
@@ -304,7 +303,6 @@ body.algorithms-page .navbar.scrolled {
   text-decoration: none;
 }
 
-/* Desktop links */
 .nav-links {
   list-style: none;
   margin: 0;
@@ -330,14 +328,11 @@ body.algorithms-page .navbar.scrolled {
   transform: none !important;
 }
 
-/* Pixel underline */
 .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
   background: var(--color-accent);
   image-rendering: pixelated;
   transition: width var(--t-mid) var(--ease-snap);
@@ -365,8 +360,7 @@ body.algorithms-page .navbar.scrolled {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -376,13 +370,12 @@ body.algorithms-page .navbar.scrolled {
 
 .menu-toggle .bar {
   display: block;
-  width: 100%;
-  height: 3px;
+  width: 100%; height: 3px;
   background-color: #fff;
   border-radius: 3px;
   transform-origin: center;
   transition:
-    transform var(--t-mid) var(--ease-pop),
+    transform var(--t-mid)  var(--ease-pop),
     opacity   var(--t-fast) var(--ease-out);
 }
 
@@ -394,8 +387,6 @@ body.algorithms-page .navbar.scrolled {
 /* =====================================================
    6. BUTTONS & UI COMPONENTS
    ===================================================== */
-
-/* ── Shared button transition base ── */
 .hero-nav-btn,
 .contact-btn,
 .quest-btn,
@@ -411,7 +402,6 @@ body.algorithms-page .navbar.scrolled {
     opacity          var(--t-fast) var(--ease-snap);
 }
 
-/* ── Hero nav buttons ── */
 .hero-nav-btn {
   position: relative;
   overflow: hidden;
@@ -432,7 +422,6 @@ body.algorithms-page .navbar.scrolled {
   align-items: center;
 }
 
-/* Shimmer sweep */
 .hero-nav-btn::before {
   content: "";
   position: absolute;
@@ -462,12 +451,11 @@ body.algorithms-page .navbar.scrolled {
   font-size: 14px;
   padding: 8px 15px;
 }
-
 .resume-btn:hover { background: rgba(42,16,53,0.92) !important; }
 
 .github-btn {
   padding: 10px;
-  width: 50px; height: 50px;
+  width: 52px; height: 52px;
   justify-content: center;
   align-items: center;
 }
@@ -478,7 +466,6 @@ body.algorithms-page .navbar.scrolled {
   image-rendering: pixelated;
 }
 
-/* ── Back to home (sub-pages, fixed) ── */
 .back-home-btn {
   position: fixed;
   top: 20px; left: 20px;
@@ -515,7 +502,6 @@ body.algorithms-page .navbar.scrolled {
   transition-duration: var(--t-instant) !important;
 }
 
-/* ── Back to Projects (inline, sub-pages) ── */
 .back-nav-btn {
   position: relative !important;
   top: auto !important; left: auto !important;
@@ -553,7 +539,6 @@ body.projects-page   .back-nav-btn {
   margin: 90px 0 -0.5rem clamp(16px, 4vw, 2rem) !important;
 }
 
-/* ── Contact buttons ── */
 .contact-btn {
   background: rgba(5,17,57,0.60);
   backdrop-filter: blur(5px);
@@ -583,7 +568,6 @@ body.projects-page   .back-nav-btn {
   transition-duration: var(--t-instant) !important;
 }
 
-/* ── Quest button ── */
 .quest-btn {
   display: inline-block;
   margin-top: 12px;
@@ -607,7 +591,6 @@ body.projects-page   .back-nav-btn {
   transform: translateY(-2px) !important;
 }
 
-/* ── Algorithm / project card buttons ── */
 .card-btn {
   display: inline-block;
   padding: 10px 15px;
@@ -620,7 +603,6 @@ body.projects-page   .back-nav-btn {
 .card-btn.primary {
   background: rgba(127,179,255,0.20);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   color: var(--color-text);
   border: 2px solid rgba(127,179,255,0.60);
 }
@@ -636,7 +618,6 @@ body.projects-page   .back-nav-btn {
 .card-btn.secondary {
   background: rgba(5,17,57,0.60);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   color: var(--color-text);
   border: 2px solid var(--color-border-blue);
 }
@@ -652,6 +633,9 @@ body.projects-page   .back-nav-btn {
 
 /* =====================================================
    7. HERO SECTION
+   ── hero.png background (alternating set 1)
+   ── JS injects star dots + floating pixel runes
+      into .hero-deco-layer which JS creates
    ===================================================== */
 #hero {
   background-image: url("imgs/hero.png");
@@ -661,17 +645,77 @@ body.projects-page   .back-nav-btn {
   background-attachment: fixed;
   image-rendering: pixelated;
   min-height: calc(100vh - 40px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(220px, 360px);
+  grid-template-rows: auto auto;
+  align-items: start;
   gap: 2rem;
   padding: 120px 6vw 80px;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
+/* JS-created decoration layer sits here */
+#hero .hero-deco-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Floating rune spans (created by JS) */
+#hero .hero-deco-layer .px-rune {
+  position: absolute;
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  user-select: none;
+  pointer-events: none;
+  animation: runeFloat var(--rune-dur, 5s) ease-in-out infinite;
+  animation-delay: var(--rune-delay, 0s);
+  color: var(--rune-color, rgba(255,200,221,0.30));
+  image-rendering: pixelated;
+}
+
+/* Pixel corner brackets (created by JS) */
+#hero .hero-deco-layer .px-corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-style: solid;
+  border-color: rgba(255,200,221,0.22);
+  pointer-events: none;
+  animation: cornerPulse var(--corner-dur, 3s) ease-in-out infinite;
+  animation-delay: var(--corner-delay, 0s);
+}
+
+/* Floating pixel squares (created by JS) */
+#hero .hero-deco-layer .px-dot {
+  position: absolute;
+  image-rendering: pixelated;
+  animation: floatPixel var(--dot-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--dot-delay, 0s);
+}
+
+/* Stars inside hero (same class as body stars) */
+#hero .hero-deco-layer .star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: #fff;
+  image-rendering: pixelated;
+  animation: twinkle var(--twinkle-dur, 3s) var(--twinkle-delay, 0s) infinite var(--ease-io);
+  will-change: opacity, transform;
+}
+
+#hero .hero-deco-layer .star.shooting {
+  width: 3px !important; height: 3px !important;
+  animation: shootingStar 1.3s var(--twinkle-delay, 0s) infinite var(--ease-out) !important;
+}
+
+/* Grid placement for hero children */
 .hero-content {
+  grid-column: 1; grid-row: 1;
+  position: relative; z-index: 5;
   background-color: var(--color-purple);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -679,28 +723,34 @@ body.projects-page   .back-nav-btn {
   border-radius: 15px;
   border: 2px solid var(--color-border-pink);
   max-width: 950px;
-  width: min(100%, 950px);
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.30);
-  /* entrance handled via .reveal (unified with skills) */
   will-change: transform, opacity;
 }
 
 #hero-buttons-container {
+  grid-column: 1; grid-row: 2;
+  position: relative; z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 0;
   width: min(100%, 500px);
   margin-left: auto;
   margin-right: auto;
-  /* entrance handled via .reveal (unified with skills) */
   will-change: transform, opacity;
   justify-content: center;
+}
+
+.character {
+  grid-column: 2; grid-row: 1 / 3;
+  align-self: center;
+  position: relative; z-index: 5;
 }
 
 .hero-secondary-buttons {
@@ -708,7 +758,6 @@ body.projects-page   .back-nav-btn {
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
-  width: auto;
   align-items: center;
   margin: 0 auto;
 }
@@ -716,27 +765,16 @@ body.projects-page   .back-nav-btn {
 .hero-primary-btn {
   width: 100%;
   max-width: 420px;
-  margin-top: 0;
-  padding: clamp(12px, 2.5vw, 16px) clamp(20px, 4vw, 30px);
-  font-size: clamp(18px, 2.5vw, 24px);
+  padding: clamp(12px,2.5vw,16px) clamp(20px,4vw,30px);
+  font-size: clamp(18px,2.5vw,24px);
   justify-content: center;
   align-items: center;
 }
 
 .hero-nav-btn.btn-small {
-  padding: clamp(10px, 1.5vw, 14px) clamp(16px, 3vw, 22px);
-  font-size: clamp(13px, 1.5vw, 15px);
+  padding: clamp(10px,1.5vw,14px) clamp(16px,3vw,22px);
+  font-size: clamp(13px,1.5vw,15px);
 }
-
-.github-btn {
-  padding: 10px;
-  width: 52px;
-  height: 52px;
-  justify-content: center;
-  align-items: center;
-}
-
-
 
 .hero-content h1 {
   font-family: "Press Start 2P", cursive;
@@ -764,10 +802,17 @@ body.projects-page   .back-nav-btn {
      1px  1px 0px #4a1e5d;
 }
 
+.headsentence.typing::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 1;
+  animation: blinkCaret 900ms steps(1) infinite;
+}
+
 .scroll-indicator {
   position: absolute;
-  bottom: 30px;
-  left: 50%;
+  bottom: 30px; left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -779,16 +824,14 @@ body.projects-page   .back-nav-btn {
   letter-spacing: 2px;
   text-transform: uppercase;
   animation: scrollPulse 2.4s var(--ease-io) infinite;
-}
-
-.scroll-arrow {
-  font-size: 14px;
-  animation: none;
+  z-index: 5;
 }
 
 
 /* =====================================================
    8. ABOUT SECTION
+   ── hero.png (same as hero — continuous purple town)
+   ── JS also injects a lighter deco layer here
    ===================================================== */
 #about {
   background-image: url("imgs/hero.png");
@@ -805,7 +848,22 @@ body.projects-page   .back-nav-btn {
   padding: 50px 6vw 40px;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
+
+/* Same decoration layer structure as hero, but JS makes it subtler */
+#about .hero-deco-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#about .hero-deco-layer .px-rune    { position: absolute; font-family: "Press Start 2P", cursive; font-size: 10px; user-select: none; pointer-events: none; animation: runeFloat var(--rune-dur, 5s) ease-in-out infinite; animation-delay: var(--rune-delay, 0s); color: var(--rune-color, rgba(255,200,221,0.20)); }
+#about .hero-deco-layer .px-corner  { position: absolute; width: 20px; height: 20px; border-style: solid; border-color: rgba(255,200,221,0.15); pointer-events: none; animation: cornerPulse var(--corner-dur, 3s) ease-in-out infinite; animation-delay: var(--corner-delay, 0s); }
+#about .hero-deco-layer .px-dot     { position: absolute; image-rendering: pixelated; animation: floatPixel var(--dot-dur, 4s) ease-in-out infinite; animation-delay: var(--dot-delay, 0s); }
+#about .hero-deco-layer .star       { position: absolute; width: 2px; height: 2px; background: rgba(255,255,255,0.6); image-rendering: pixelated; animation: twinkle var(--twinkle-dur, 3s) var(--twinkle-delay, 0s) infinite var(--ease-io); }
 
 .about-glass-box {
   background-color: rgba(42,16,53,0.87);
@@ -841,14 +899,14 @@ body.projects-page   .back-nav-btn {
 
 /* =====================================================
    9. SKILLS SECTION
-   ── Background: pixel-sky image + aurora + grid overlay
-   ── Image: pixellab-ery-minimal-pixel-art-sky-back.png
+   ── pixel-sky bg (body shows through — alternating set 2)
+   ── grid overlay + star layer (JS injects into #stars)
    ===================================================== */
 #skills {
+  background-color: transparent; /* body pixel-sky shows through */
   position: relative;
   isolation: isolate;
   overflow: hidden;
-
   min-height: 100vh;
   min-height: 100dvh;
   height: auto;
@@ -859,23 +917,25 @@ body.projects-page   .back-nav-btn {
   align-items: center;
 }
 
-/* Dark scrim so cards stay legible over the pixel art */
+/* Subtle dark tint so cards stay readable */
 #skills::before {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: 0;
+  inset: 0; z-index: 0;
   pointer-events: none;
-  /* removed scrim per request — allow pixel sky to show through */
-  background: none;
+  background: linear-gradient(
+    180deg,
+    rgba(14,11,31,0.35) 0%,
+    rgba(5,17,57,0.18)  50%,
+    rgba(14,11,31,0.45) 100%
+  );
 }
 
 /* Pixel-grid overlay */
 #skills::after {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: 0;
+  inset: 0; z-index: 0;
   pointer-events: none;
   background-image:
     radial-gradient(circle, rgba(255,255,255,0.80) 1px, transparent 1px),
@@ -883,34 +943,19 @@ body.projects-page   .back-nav-btn {
     radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px),
     linear-gradient(var(--grid-blue) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-blue) 1px, transparent 1px);
-  background-size:
-    170px 170px,
-    250px 250px,
-    330px 330px,
-    30px 30px,
-    30px 30px;
-  background-position:
-    42px 32px,
-    130px 148px,
-    210px 82px,
-    0 0, 0 0;
+  background-size: 170px 170px, 250px 250px, 330px 330px, 30px 30px, 30px 30px;
+  background-position: 42px 32px, 130px 148px, 210px 82px, 0 0, 0 0;
   opacity: 0.30;
   image-rendering: pixelated;
   animation: gridMove 22s linear infinite;
 }
 
-/* All skills content above overlays */
 .skills,
 .skills-container,
 .skill-glass-card,
-#skills h1 {
-  position: relative;
-  z-index: 5;
-}
+#skills h1 { position: relative; z-index: 5; }
 
-#skills,
-.skills,
-.skills-container {
+#skills, .skills, .skills-container {
   height: auto !important;
   max-height: none !important;
   overflow: visible !important;
@@ -929,9 +974,7 @@ body.projects-page   .back-nav-btn {
   font-size: clamp(22px, 4vw, 28px);
   margin-bottom: 40px;
   text-align: center;
-  text-shadow:
-    3px 3px 0px #020a24,
-    0 0 20px rgba(127,179,255,0.40);
+  text-shadow: 3px 3px 0px #020a24, 0 0 20px rgba(127,179,255,0.40);
 }
 
 .skills-container {
@@ -958,7 +1001,7 @@ body.projects-page   .back-nav-btn {
     inset 0 1px 0 rgba(255,255,255,0.06) !important;
   display: flex;
   flex-direction: column;
-  /* stagger entrance */
+  position: relative;
   opacity: 0;
   transform: translateY(24px);
   will-change: transform, opacity;
@@ -967,46 +1010,8 @@ body.projects-page   .back-nav-btn {
     transform    var(--t-reveal) var(--ease-pop),
     border-color var(--t-mid)   var(--ease-out),
     box-shadow   var(--t-mid)   var(--ease-out);
-  /* fallback if observer never fires */
   animation: forceShow 0ms 1500ms forwards;
 }
-
-/* Frame effect that forms around skill cards when triggered */
-.skill-glass-card::before,
-.skill-glass-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  pointer-events: none;
-  box-shadow: 0 0 0 0 rgba(127,179,255,0.0) inset;
-  transition: box-shadow 420ms var(--ease-pop), transform 420ms var(--ease-pop), opacity 420ms var(--ease-out);
-  opacity: 0;
-}
-
-.skills.frame-on .skill-glass-card::before {
-  opacity: 1;
-  box-shadow: 0 0 0 2px rgba(127,179,255,0.22) inset, 0 8px 30px rgba(127,179,255,0.06);
-}
-
-.skills.frame-on .skill-glass-card::after {
-  opacity: 1;
-  box-shadow: 0 0 0 4px rgba(255,200,221,0.06) inset;
-}
-
-/* Ensure positioning context for the pseudo-elements */
-.skill-glass-card { position: relative; }
-
-/* Typing cursor for hero headsentence */
-.headsentence.typing::after {
-  content: "|";
-  display: inline-block;
-  margin-left: 6px;
-  opacity: 1;
-  animation: blinkCaret 900ms steps(1) infinite;
-}
-
-@keyframes blinkCaret { 50% { opacity: 0; } }
 
 .skill-glass-card.in-view {
   animation: none !important;
@@ -1067,17 +1072,21 @@ body.projects-page   .back-nav-btn {
   font-size: 18px;
 }
 
+/* frame-on effect when hovering hero primary CTA */
+.skills.frame-on .skill-glass-card {
+  border-color: rgba(127,179,255,0.70) !important;
+  box-shadow:
+    0 8px 32px rgba(127,179,255,0.18),
+    inset 0 0 0 1px rgba(127,179,255,0.12) !important;
+}
+
 
 /* =====================================================
-   10. PROJECTS SECTION (index.html)
-   ── Background: same pixel-sky image as Skills
+   10. PROJECTS SECTION (index.html inline cards)
+   ── pixel-sky bg (body shows through)
    ===================================================== */
 #projects {
-  background-image: url("imgs/pixellab-ery-minimal-pixel-art-sky-back-1771496997042.png");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center bottom;
-  image-rendering: pixelated;
+  background-color: transparent;
   height: 100vh;
   min-height: 100vh;
   display: flex;
@@ -1089,6 +1098,22 @@ body.projects-page   .back-nav-btn {
   overflow: hidden;
 }
 
+#projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5,8,22,0.30) 0%,
+    rgba(5,17,57,0.12) 50%,
+    rgba(5,8,22,0.40) 100%
+  );
+}
+
+#projects > * { position: relative; z-index: 1; }
+
 body.projects-page {
   background-color: #0e0b1f;
   background-image: url("imgs/pixellab-ery-minimal-pixel-art-sky-back-1771496997042.png");
@@ -1097,24 +1122,6 @@ body.projects-page {
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
-  image-rendering: pixelated;
-}
-
-
-
-body.projects-page.stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-
-body.projects-page   .star {
-  position: absolute;
-  width: 2px; height: 2px;
-  background: #fff;
   image-rendering: pixelated;
 }
 
@@ -1129,18 +1136,6 @@ body.projects-page   .star {
   background: #fff !important;
   animation: shootingStar 1.3s var(--twinkle-delay, 0s) infinite var(--ease-out) !important;
 }
-/* Dark scrim over pixel-sky */
-#projects::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  /* removed scrim so projects background is un-tinted */
-  background: none;
-}
-
-#projects > * { position: relative; z-index: 1; }
 
 .projects h1 {
   padding: 20px;
@@ -1152,7 +1147,6 @@ body.projects-page   .star {
   text-align: center;
 }
 
-/* Category grid (projects.html) */
 .category-grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1179,7 +1173,6 @@ body.projects-page   .star {
   justify-content: center;
   align-items: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.30);
-  /* stagger entrance */
   opacity: 0;
   transform: translateY(20px) scale(0.97);
   will-change: transform, opacity;
@@ -1205,9 +1198,7 @@ body.projects-page   .star {
 .category-card:hover {
   transform: translateY(-8px) !important;
   border-color: rgba(127,179,255,0.90);
-  box-shadow:
-    0 15px 35px rgba(127,179,255,0.25),
-    0 0 0 1px rgba(127,179,255,0.12);
+  box-shadow: 0 15px 35px rgba(127,179,255,0.25), 0 0 0 1px rgba(127,179,255,0.12);
 }
 
 .category-card:active {
@@ -1232,7 +1223,6 @@ body.projects-page   .star {
   margin: 0;
 }
 
-/* Inline project cards (index) */
 .project-grid {
   display: flex;
   flex-direction: column;
@@ -1265,9 +1255,7 @@ body.projects-page   .star {
 .project-card.active {
   transform: translateY(-6px);
   border-color: rgba(127,179,255,0.90);
-  box-shadow:
-    0 14px 40px rgba(127,179,255,0.26),
-    0 0 0 1px rgba(127,179,255,0.12);
+  box-shadow: 0 14px 40px rgba(127,179,255,0.26), 0 0 0 1px rgba(127,179,255,0.12);
 }
 
 .project-card:active {
@@ -1314,11 +1302,7 @@ body.projects-page   .star {
   opacity: 1;
 }
 
-.project-content p {
-  margin-top: 20px;
-  font-size: 14px;
-  line-height: 1.6;
-}
+.project-content p { margin-top: 20px; font-size: 14px; line-height: 1.6; }
 
 .tech-stack {
   display: block;
@@ -1328,7 +1312,6 @@ body.projects-page   .star {
   font-weight: bold;
 }
 
-/* Shared card extras */
 .card-tag {
   display: inline-block;
   margin-bottom: 12px;
@@ -1339,11 +1322,7 @@ body.projects-page   .star {
   letter-spacing: 1px;
 }
 
-.card-highlights {
-  list-style: none;
-  padding: 0;
-  margin: 18px 0 0;
-}
+.card-highlights { list-style: none; padding: 0; margin: 18px 0 0; }
 
 .card-highlights li {
   position: relative;
@@ -1354,20 +1333,9 @@ body.projects-page   .star {
   font-size: 13px;
 }
 
-.card-highlights li::before {
-  content: "▹";
-  position: absolute;
-  left: 0;
-  color: var(--color-blue);
-}
+.card-highlights li::before { content: "▹"; position: absolute; left: 0; color: var(--color-blue); }
 
-.tech-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-  justify-content: center;
-}
+.tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; justify-content: center; }
 
 .pill {
   display: inline-block;
@@ -1380,15 +1348,11 @@ body.projects-page   .star {
   color: var(--color-accent-alt);
 }
 
-.card-links {
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
-}
+.card-links { margin-top: 18px; display: flex; justify-content: center; }
 
 
 /* =====================================================
-   11. CONTACT SECTION  ← UNCHANGED
+   11. CONTACT SECTION
    ===================================================== */
 #contact {
   background-image: url("imgs/contact-bg.png");
@@ -1403,7 +1367,7 @@ body.projects-page   .star {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 1; /* Hide global stars under this section */
+  z-index: 1;
 }
 
 .contact-box {
@@ -1427,7 +1391,8 @@ body.projects-page   .star {
   font-size: clamp(20px, 4vw, 24px);
 }
 
-.contact-box p {
+.contact-box p,
+.contact-box .readable-text {
   font-family: "Pixelify Sans", sans-serif;
   font-size: clamp(15px, 3vw, 18px);
   margin-bottom: 30px;
@@ -1445,9 +1410,7 @@ body.projects-page   .star {
 
 /* =====================================================
    12. SUB-PAGES: PROJECTS & ALGORITHMS
-   ── Both use the pixel-sky image as background
    ===================================================== */
-
 body.algorithms-page,
 body.projects-page {
   background-color: #0e0b1f;
@@ -1460,7 +1423,6 @@ body.projects-page {
   image-rendering: pixelated;
 }
 
-/* Stars overlay on sub-pages */
 body.algorithms-page .stars,
 body.projects-page   .stars {
   position: fixed;
@@ -1478,19 +1440,6 @@ body.projects-page   .star {
   image-rendering: pixelated;
 }
 
-.star {
-  animation: twinkle var(--twinkle-dur, 3s) var(--twinkle-delay, 0s) infinite var(--ease-io);
-  image-rendering: pixelated;
-  will-change: opacity, transform;
-}
-
-.star.shooting {
-  width: 3px !important; height: 3px !important;
-  background: #fff !important;
-  animation: shootingStar 1.3s var(--twinkle-delay, 0s) infinite var(--ease-out) !important;
-}
-
-/* Projects page cityscape */
 body.projects-page .cityscape {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -1499,7 +1448,6 @@ body.projects-page .cityscape {
   z-index: 0;
 }
 
-/* ── Algorithms page layout ── */
 body.algorithms-page .page {
   position: relative;
   z-index: 2;
@@ -1508,10 +1456,7 @@ body.algorithms-page .page {
   padding: 5rem 2rem 8rem;
 }
 
-body.algorithms-page .page-header {
-  text-align: center;
-  margin-bottom: 3.5rem;
-}
+body.algorithms-page .page-header { text-align: center; margin-bottom: 3.5rem; }
 
 body.algorithms-page .page-header .breadcrumb {
   font-family: "Pixelify Sans", sans-serif;
@@ -1548,16 +1493,8 @@ body.algorithms-page .pixel-divider {
   margin-top: 1.5rem;
 }
 
-body.algorithms-page .pixel-divider .dot {
-  width: 6px; height: 6px;
-  background: rgba(255,200,221,0.80);
-  image-rendering: pixelated;
-}
-
-body.algorithms-page .pixel-divider .line {
-  width: 80px; height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255,200,221,0.80), transparent);
-}
+body.algorithms-page .pixel-divider .dot { width: 6px; height: 6px; background: rgba(255,200,221,0.80); image-rendering: pixelated; }
+body.algorithms-page .pixel-divider .line { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,200,221,0.80), transparent); }
 
 body.algorithms-page .section-label {
   font-family: "Press Start 2P", cursive;
@@ -1571,12 +1508,7 @@ body.algorithms-page .section-label {
   gap: 12px;
 }
 
-body.algorithms-page .section-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgba(127,179,255,0.30);
-}
+body.algorithms-page .section-label::after { content: ""; flex: 1; height: 1px; background: rgba(127,179,255,0.30); }
 
 body.algorithms-page .projects-grid {
   display: grid;
@@ -1584,7 +1516,6 @@ body.algorithms-page .projects-grid {
   gap: 1.8rem;
 }
 
-/* Project cards on sub-pages */
 body.algorithms-page .project-card {
   width: auto; max-width: none;
   background-color: rgba(5,17,57,0.72);
@@ -1598,7 +1529,6 @@ body.algorithms-page .project-card {
   box-shadow: 0 10px 30px rgba(0,0,0,0.30);
 }
 
-/* Featured card (2-col on desktop) */
 body.algorithms-page .project-card.featured {
   grid-column: 1 / -1;
   display: grid;
@@ -1610,48 +1540,17 @@ body.algorithms-page .project-card.featured {
 body.algorithms-page .project-card.featured .card-right {
   background-color: rgba(5,17,57,0.52);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(127,179,255,0.20);
   border-radius: 10px;
   padding: 1.2rem;
 }
 
-body.algorithms-page .card-right-title {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.75rem;
-  color: var(--color-accent);
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
+body.algorithms-page .card-right-title { font-family: "Press Start 2P", cursive; font-size: 0.75rem; color: var(--color-accent); margin-bottom: 1rem; letter-spacing: 1px; }
+body.algorithms-page .concept-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.9rem; }
+body.algorithms-page .concept-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+body.algorithms-page .concept-text { font-family: "Space Mono", monospace; font-size: 0.85rem; color: var(--color-accent-alt); line-height: 1.6; }
+body.algorithms-page .concept-text strong { color: var(--color-accent); display: block; font-size: 0.9rem; margin-bottom: 2px; }
 
-body.algorithms-page .concept-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 0.9rem;
-}
-
-body.algorithms-page .concept-icon {
-  font-size: 1.2rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-body.algorithms-page .concept-text {
-  font-family: "Space Mono", monospace;
-  font-size: 0.85rem;
-  color: var(--color-accent-alt);
-  line-height: 1.6;
-}
-
-body.algorithms-page .concept-text strong {
-  color: var(--color-accent);
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 2px;
-}
-
-/* Coming-soon placeholder */
 body.algorithms-page .project-card.coming-soon {
   border: 3px dashed rgba(127,179,255,0.40);
   background-color: rgba(5,17,57,0.40);
@@ -1666,20 +1565,12 @@ body.algorithms-page .project-card.coming-soon {
 }
 
 body.algorithms-page .coming-soon .cs-icon { font-size: 2rem; opacity: 0.8; }
-
-body.algorithms-page .coming-soon .cs-text {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.8rem;
-  color: var(--color-text);
-  line-height: 1.8;
-}
+body.algorithms-page .coming-soon .cs-text { font-family: "Press Start 2P", cursive; font-size: 0.8rem; color: var(--color-text); line-height: 1.8; }
 
 
 /* =====================================================
    13. SCROLL UTILITIES & REVEAL
    ===================================================== */
-
-/* Generic .reveal (about text blocks etc.) */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -1689,14 +1580,13 @@ body.algorithms-page .coming-soon .cs-text {
     transform var(--t-reveal) var(--ease-out);
 }
 
-.reveal.visible           { opacity: 1; transform: translateY(0); }
-.reveal:nth-child(1)      { transition-delay:   0ms; }
-.reveal:nth-child(2)      { transition-delay:  80ms; }
-.reveal:nth-child(3)      { transition-delay: 160ms; }
-.reveal:nth-child(4)      { transition-delay: 240ms; }
-.reveal:nth-child(5)      { transition-delay: 320ms; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(1) { transition-delay:   0ms; }
+.reveal:nth-child(2) { transition-delay:  80ms; }
+.reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal:nth-child(4) { transition-delay: 240ms; }
+.reveal:nth-child(5) { transition-delay: 320ms; }
 
-/* About text paragraphs */
 #about .about-text-blocks .readable-text {
   opacity: 0;
   transform: translateY(20px);
@@ -1716,10 +1606,15 @@ body.algorithms-page .coming-soon .cs-text {
   transform: translateY(0) !important;
 }
 
+/* Stars (global) */
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
 
-/* =====================================================
-   14. STARS & CITY DECORATIONS
-   ===================================================== */
 .city-window {
   animation: winFlicker var(--flicker-dur, 8s) var(--flicker-delay, 0s) infinite step-start;
 }
@@ -1762,11 +1657,10 @@ body.algorithms-page .coming-soon .cs-text {
 
 
 /* =====================================================
-   17. MEDIA QUERIES — MOBILE (≤ 768px)
+   MEDIA QUERIES — MOBILE (≤ 768px)
    ===================================================== */
 @media (max-width: 768px) {
 
-  /* ── Nav ── */
   .navbar {
     width: 95%;
     max-width: 100%;
@@ -1782,8 +1676,7 @@ body.algorithms-page .coming-soon .cs-text {
 
   .nav-links {
     position: fixed;
-    top: 68px;
-    left: 50%;
+    top: 68px; left: 50%;
     transform: translateX(-50%);
     width: 92%;
     background: rgba(14,8,28,0.97);
@@ -1806,12 +1699,7 @@ body.algorithms-page .coming-soon .cs-text {
     box-shadow: 0 12px 28px rgba(0,0,0,0.50);
   }
 
-  .nav-links.active {
-    max-height: 100vh;
-    opacity: 1;
-    padding: 0.8rem 1.2rem 1.2rem;
-  }
-
+  .nav-links.active { max-height: 100vh; opacity: 1; padding: 0.8rem 1.2rem 1.2rem; }
   .nav-links li { width: 100%; border-bottom: 1px solid rgba(255,200,221,0.10); }
   .nav-links li:last-child { border-bottom: none; }
 
@@ -1832,13 +1720,8 @@ body.algorithms-page .coming-soon .cs-text {
     transform: none !important;
   }
 
-  /* Disable pixel-grid animations on mobile — saves battery */
-  #skills::after {
-    animation: none;
-    opacity: 0.18;
-  }
+  #skills::after { animation: none; opacity: 0.18; }
 
-  /* ── Hero ── */
   #hero {
     display: flex !important;
     flex-direction: column !important;
@@ -1860,12 +1743,10 @@ body.algorithms-page .coming-soon .cs-text {
   .hero-content h1 {
     font-size: clamp(13px, 3.8vw, 18px) !important;
     line-height: 1.9 !important;
-    text-align: center !important;
   }
 
   .headsentence {
     font-size: clamp(10px, 2.8vw, 13px) !important;
-    text-align: center !important;
     line-height: 2 !important;
     margin-top: 14px !important;
   }
@@ -1879,26 +1760,17 @@ body.algorithms-page .coming-soon .cs-text {
     gap: 10px !important;
     width: 100% !important;
     margin-top: 0 !important;
-    text-align: center !important;
   }
 
   .hero-nav-btn { font-size: 12px !important; padding: 10px 14px !important; }
   .resume-btn   { font-size: 11px !important; padding: 10px 12px !important; }
   .github-btn   { width: 42px !important; height: 42px !important; padding: 8px !important; }
   .pixel-icon   { width: 22px !important; height: 22px !important; }
+  .character, .character2, .character3, .character4 { display: none !important; }
 
-  .character,
-  .character2,
-  .character3,
-  .character4 { display: none !important; }
-
-  /* ── About ── */
   #about {
     padding: 80px 16px 50px !important;
     background-attachment: scroll !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .about-glass-box {
@@ -1909,14 +1781,12 @@ body.algorithms-page .coming-soon .cs-text {
 
   .about-glass-box h1 {
     font-size: clamp(15px, 5vw, 20px) !important;
-    text-align: center !important;
     margin-bottom: 18px !important;
   }
 
   .readable-text    { font-size: 12px !important; line-height: 1.9 !important; }
   .about-text-blocks { gap: 14px; }
 
-  /* ── Skills ── */
   #skills {
     padding: 80px 16px 60px !important;
     background-attachment: scroll !important;
@@ -1925,11 +1795,7 @@ body.algorithms-page .coming-soon .cs-text {
     overflow: visible !important;
   }
 
-  .skills h1 {
-    font-size: clamp(14px, 4.5vw, 18px) !important;
-    margin-bottom: 28px !important;
-    text-align: center !important;
-  }
+  .skills h1 { font-size: clamp(14px, 4.5vw, 18px) !important; margin-bottom: 28px !important; }
 
   .skills-container {
     display: grid !important;
@@ -1946,11 +1812,10 @@ body.algorithms-page .coming-soon .cs-text {
     box-sizing: border-box !important;
   }
 
-  .skill-icon   { font-size: 30px !important; margin-bottom: 8px !important; }
-  .skill-title  { font-size: 11px !important; margin-bottom: 14px !important; }
-  .skills-list  { font-size: 12px !important; }
+  .skill-icon  { font-size: 30px !important; margin-bottom: 8px !important; }
+  .skill-title { font-size: 11px !important; margin-bottom: 14px !important; }
+  .skills-list { font-size: 12px !important; }
 
-  /* ── Projects index ── */
   #projects {
     padding: 80px 16px 60px !important;
     height: auto !important;
@@ -1966,123 +1831,60 @@ body.algorithms-page .coming-soon .cs-text {
     width: 100% !important;
   }
 
-  .category-card {
-    padding: 22px 16px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
+  .category-card { padding: 22px 16px !important; width: 100% !important; box-sizing: border-box !important; }
   .card-icon  { font-size: 28px !important; margin-bottom: 8px !important; }
   .card-title { font-size: 12px !important; }
   .card-desc  { font-size: 11px !important; }
 
   .projects h1 { font-size: clamp(15px, 5vw, 20px); padding: 16px; }
 
-  .project-card {
-    width: 100% !important;
-    padding: 16px !important;
-    box-sizing: border-box !important;
-  }
-
+  .project-card { width: 100% !important; padding: 16px !important; box-sizing: border-box !important; }
   .project-name { font-size: 13px !important; }
 
-  /* ── Contact (UNCHANGED layout, only scroll fix) ── */
   #contact {
     padding: 70px 16px 50px;
     background-attachment: scroll !important;
   }
 
-  .contact-box {
-    width: 100%;
-    padding: 28px 18px;
-  }
-
+  .contact-box { width: 100%; padding: 28px 18px; }
   .contact-box h1 { font-size: clamp(16px, 5vw, 20px); }
   .contact-box p  { font-size: 13px; }
 
-  .contact-links {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
+  .contact-links { flex-direction: column; align-items: stretch; gap: 12px; }
+  .contact-btn { text-align: center; width: 100%; font-size: 11px; padding: 14px 12px; box-sizing: border-box; }
 
-  .contact-btn {
-    text-align: center;
-    width: 100%;
-    font-size: 11px;
-    padding: 14px 12px;
-    box-sizing: border-box;
-  }
+  .back-nav-btn { margin: 76px 0 -10px 16px !important; font-size: 10px !important; padding: 8px 14px !important; }
 
-  /* ── Back nav button ── */
-  .back-nav-btn {
-    margin: 76px 0 -10px 16px !important;
-    font-size: 10px !important;
-    padding: 8px 14px !important;
-  }
+  body.algorithms-page .page { padding: 16px 16px 5rem !important; margin-top: 0 !important; }
+  body.algorithms-page .projects-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  body.algorithms-page .project-card.featured { grid-template-columns: 1fr !important; }
+  body.algorithms-page .page-header h1 { font-size: clamp(0.8rem, 4vw, 1.1rem) !important; }
+  body.algorithms-page .project-card { padding: 20px 16px !important; }
 
-  /* ── Sub-page grids ── */
-  body.algorithms-page .page {
-    padding: 16px 16px 5rem !important;
-    margin-top: 0 !important;
-  }
-
-  body.algorithms-page .projects-grid {
-    grid-template-columns: 1fr !important;
-    gap: 14px !important;
-  }
-
-  body.algorithms-page .project-card.featured {
-    grid-template-columns: 1fr !important;
-  }
-
-  body.algorithms-page .page-header h1 {
-    font-size: clamp(0.8rem, 4vw, 1.1rem) !important;
-  }
-
-  body.algorithms-page .project-card {
-    padding: 20px 16px !important;
-  }
+  /* Reduce hero decorations on small screens */
+  #hero .hero-deco-layer .px-corner { display: none; }
+  #hero .hero-deco-layer .px-rune   { opacity: 0.4; }
+  #about .hero-deco-layer .px-corner { display: none; }
 }
 
 
 /* =====================================================
-   18. MEDIA QUERIES — SMALL
+   TABLET 600px–900px
    ===================================================== */
-
-/* Tablet: 2-col skills + category grid */
 @media (min-width: 600px) and (max-width: 900px) {
-  #hero {
-    grid-template-columns: 1fr !important;
-    padding: 110px 24px 70px !important;
-  }
-
-  .category-grid-container {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 18px !important;
-    padding: 16px !important;
-  }
-
-  .skills-container {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .skill-glass-card {
-    width: 100% !important;
-    max-width: none !important;
-  }
+  #hero { grid-template-columns: 1fr !important; padding: 110px 24px 70px !important; }
+  .character { display: none !important; }
+  .category-grid-container { grid-template-columns: 1fr 1fr !important; gap: 18px !important; padding: 16px !important; }
+  .skills-container { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+  .skill-glass-card { width: 100% !important; max-width: none !important; }
 }
 
-/* ≤ 480px */
 @media (max-width: 480px) {
-  .contact-links   { flex-direction: column; align-items: center; width: 100%; }
-  .contact-btn     { width: 100%; min-width: unset; }
-  .back-home-btn   { top: 14px; left: 10px; font-size: 10px; min-width: 90px; height: 40px; padding: 0 12px; }
+  .contact-links { flex-direction: column; align-items: center; width: 100%; }
+  .contact-btn   { width: 100%; min-width: unset; }
+  .back-home-btn { top: 14px; left: 10px; font-size: 10px; min-width: 90px; height: 40px; padding: 0 12px; }
 }
 
-/* ≤ 400px */
 @media (max-width: 400px) {
   .hero-content h1 { font-size: 12px !important; }
   .headsentence    { font-size: 10px !important; }
@@ -2094,19 +1896,16 @@ body.algorithms-page .coming-soon .cs-text {
 
 
 /* =====================================================
-   19. ACCESSIBILITY
+   17. ACCESSIBILITY
    ===================================================== */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration:        0.001ms !important;
     animation-iteration-count: 1       !important;
     transition-duration:       0.001ms !important;
     scroll-behavior:           auto    !important;
   }
 
-  /* Ensure elements aren't invisibly stuck at opacity:0 */
   .skill-glass-card,
   .category-card,
   .reveal,
@@ -2115,13 +1914,13 @@ body.algorithms-page .coming-soon .cs-text {
     transform: none !important;
     animation: none !important;
   }
+
+  #hero  .hero-deco-layer,
+  #about .hero-deco-layer { display: none; }
 }
 
-/* iOS Safari — background-attachment:fixed causes blank pages */
+/* iOS Safari — background-attachment:fixed causes blanks */
 @supports (-webkit-overflow-scrolling: touch) {
-  body, #hero, #about, #contact {
-    background-attachment: scroll !important;
-  }
-
+  body, #hero, #about, #contact { background-attachment: scroll !important; }
   #skills::after { animation: none !important; opacity: 0.18; }
 }
