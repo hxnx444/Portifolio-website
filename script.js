@@ -1,174 +1,197 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.querySelector('.navbar');
-    const aboutSection = document.querySelector('#about');
-    const heroTitle = document.querySelector('#hero h1');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const projectCards = document.querySelectorAll('.project-card');
-    const starsEl = document.getElementById('stars');
+  const navbar             = document.querySelector('.navbar');
+  const navLinks           = document.querySelectorAll('.nav-links a');
+  const projectCards       = document.querySelectorAll('.project-card');
+  const starsEl            = document.getElementById('stars');
+  const menuToggle         = document.querySelector('.menu-toggle');
+  const navLinksContainer  = document.querySelector('.nav-links');
 
-    // Mobile menu elements
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinksContainer = document.querySelector('.nav-links');
+  /* ── Mobile menu ──────────────────────────────────── */
+  if (menuToggle && navLinksContainer) {
+    menuToggle.addEventListener('click', () => {
+      const willExpand = menuToggle.getAttribute('aria-expanded') !== 'true';
+      menuToggle.setAttribute('aria-expanded', willExpand);
+      menuToggle.classList.toggle('is-active');
+      navLinksContainer.classList.toggle('active');
 
-    if (menuToggle && navLinksContainer) {
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            const willExpand = !isExpanded;
-            menuToggle.setAttribute('aria-expanded', willExpand);
-            menuToggle.classList.toggle('is-active');
-            navLinksContainer.classList.toggle('active');
-
-            // Animate using max-height for smooth open/close
-            if (navLinksContainer.classList.contains('active')) {
-                const sh = navLinksContainer.scrollHeight;
-                navLinksContainer.style.maxHeight = sh + 'px';
-            } else {
-                navLinksContainer.style.maxHeight = '0px';
-            }
-        });
-
-        // Remove inline max-height after opening to allow responsiveness
-        navLinksContainer.addEventListener('transitionend', (e) => {
-            if (e.propertyName !== 'max-height') return;
-            if (navLinksContainer.classList.contains('active')) {
-                navLinksContainer.style.maxHeight = '';
-            }
-        });
-    }
-
-    if (starsEl) {
-        for (let i = 0; i < 80; i++) {
-            const s = document.createElement('div');
-            s.className = 'star';
-            s.style.left = Math.random() * 100 + '%';
-            s.style.top = Math.random() * 85 + '%';
-            s.style.animationDelay = (Math.random() * 3) + 's';
-            s.style.animationDuration = (2 + Math.random() * 3) + 's';
-            if (Math.random() > 0.85) {
-                s.style.width = s.style.height = '4px';
-                s.style.background = '#a78bfa';
-            }
-            starsEl.appendChild(s);
-        }
-    }
-
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            const skillsSection = document.getElementById('skills');
-            const contactSection = document.getElementById('contact');
-            let makeNavy = false;
-
-            const navRect = navbar.getBoundingClientRect();
-            const navCenter = navRect.top + (navRect.height / 2);
-
-            if (skillsSection && skillsSection.getBoundingClientRect().top <= navCenter && skillsSection.getBoundingClientRect().bottom >= navCenter) {
-                makeNavy = true;
-            }
-            
-            if (contactSection && !makeNavy && contactSection.getBoundingClientRect().top <= navCenter && contactSection.getBoundingClientRect().bottom >= navCenter) {
-                makeNavy = true;
-            }
-
-            navbar.classList.toggle('navy-nav', makeNavy);
-
-            // Update active nav link based on scroll position
-            let current = '';
-            document.querySelectorAll('section[id]').forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(a => {
-                a.classList.remove('active');
-                if (current && a.getAttribute('href') === `#${current}`) {
-                    a.classList.add('active');
-                }
-            });
-        });
-    }
-
-    navLinks.forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-
-            // Close mobile menu if open when a link is clicked
-            if (menuToggle && menuToggle.classList.contains('is-active')) {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.classList.remove('is-active');
-                if (navLinksContainer) {
-                    navLinksContainer.classList.remove('active');
-                    navLinksContainer.style.maxHeight = '0px';
-                }
-            }
-
-            if (targetId && targetId.startsWith('#')) {
-                e.preventDefault();
-                const targetSection = document.querySelector(targetId);
-
-                if (targetSection) {
-                    const navHeight = navbar ? navbar.offsetHeight : 0;
-                    const elementPosition = targetSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.scrollY - navHeight;
-
-                    // Update URL hash without jumping to fix back button behavior
-                    history.pushState(null, null, targetId);
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    return;
-                }
-
-                // If the section doesn't exist on this page, navigate to index.html with the hash
-                const homeUrl = './index.html' + targetId;
-                window.location.href = homeUrl;
-            }
-        });
+      if (navLinksContainer.classList.contains('active')) {
+        navLinksContainer.style.maxHeight = navLinksContainer.scrollHeight + 'px';
+      } else {
+        navLinksContainer.style.maxHeight = '0px';
+      }
     });
 
-    // If page loaded with a hash, scroll to it after initial animations
-    if (window.location.hash) {
-        const hash = window.location.hash;
-        setTimeout(() => {
-            const target = document.querySelector(hash);
-            if (target) {
-                const navHeight = navbar ? navbar.offsetHeight : 0;
-                const offset = target.getBoundingClientRect().top + window.scrollY - navHeight;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-            }
-        }, 450);
+    navLinksContainer.addEventListener('transitionend', (e) => {
+      if (e.propertyName !== 'max-height') return;
+      if (navLinksContainer.classList.contains('active')) {
+        navLinksContainer.style.maxHeight = '';
+      }
+    });
+  }
+
+  /* ── Stars ────────────────────────────────────────── */
+  if (starsEl) {
+    const STAR_COUNT     = 90;
+    const SHOOTING_COUNT = 4;
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+
+      const dur   = (2 + Math.random() * 3).toFixed(2) + 's';
+      const delay = (Math.random() * 4).toFixed(2)     + 's';
+      s.style.setProperty('--twinkle-dur',   dur);
+      s.style.setProperty('--twinkle-delay', delay);
+
+      s.style.left = (Math.random() * 100) + '%';
+      s.style.top  = (Math.random() * 85)  + '%';
+
+      /* ~15% chance purple, ~5% chance golden */
+      const r = Math.random();
+      if (r > 0.95)      { s.style.background = '#fbbf24'; s.style.width = s.style.height = '3px'; }
+      else if (r > 0.85) { s.style.background = '#a78bfa'; s.style.width = s.style.height = '3px'; }
+
+      starsEl.appendChild(s);
     }
 
-    // Add click interaction for project cards (better for mobile users)
-    if (projectCards) {
-        projectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                // Remove active class from other cards if you want only one open at a time
-                // projectCards.forEach(c => c !== card && c.classList.remove('active'));
-                card.classList.toggle('active');
-            });
-        });
+    /* Shooting pixels */
+    for (let i = 0; i < SHOOTING_COUNT; i++) {
+      const s = document.createElement('div');
+      s.className = 'star shooting';
+      s.style.left  = (Math.random() * 70)  + '%';
+      s.style.top   = (Math.random() * 40)  + '%';
+      s.style.setProperty('--twinkle-delay', (5 + i * 4 + Math.random() * 3).toFixed(2) + 's');
+      starsEl.appendChild(s);
     }
+  }
 
+  /* ── City window flicker ──────────────────────────── */
+  const cityscape = document.querySelector('.cityscape');
+  if (cityscape) {
+    const windows = cityscape.querySelectorAll('rect[fill="#fbbf24"], rect[fill="#a78bfa"], rect[fill="#2dd4bf"]');
+    windows.forEach((w, i) => {
+      w.classList.add('city-window');
+      w.style.setProperty('--win-base',     w.getAttribute('opacity') || '0.7');
+      w.style.setProperty('--flicker-dur',  (6 + Math.random() * 10).toFixed(1) + 's');
+      w.style.setProperty('--flicker-delay',(Math.random() * 8).toFixed(1)       + 's');
+    });
+  }
 
-    // Trigger scroll event on load to set initial nav state
-    window.dispatchEvent(new Event('scroll'));
-    // ── Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
+  /* ── Navbar scroll behaviour ──────────────────────── */
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+      const navCenter = navbar.getBoundingClientRect().top + navbar.offsetHeight / 2;
+      let makeNavy = false;
+
+      ['skills', 'contact'].forEach(id => {
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const r = sec.getBoundingClientRect();
+        if (r.top <= navCenter && r.bottom >= navCenter) makeNavy = true;
+      });
+
+      navbar.classList.toggle('navy-nav', makeNavy);
+
+      /* Active link */
+      let current = '';
+      document.querySelectorAll('section[id]').forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', current && a.getAttribute('href') === `#${current}`);
+      });
+    });
+  }
+
+  /* ── Smooth-scroll & mobile menu close ───────────── */
+  navLinks.forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      /* Close mobile menu */
+      if (menuToggle?.classList.contains('is-active')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('is-active');
+        navLinksContainer?.classList.remove('active');
+        if (navLinksContainer) navLinksContainer.style.maxHeight = '0px';
+      }
+
+      const href = this.getAttribute('href');
+      if (!href?.startsWith('#')) return;
+
+      e.preventDefault();
+      const target = document.querySelector(href);
+
+      if (target) {
+        const offset = target.getBoundingClientRect().top + window.scrollY - (navbar?.offsetHeight || 0);
+        history.pushState(null, null, href);
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      } else {
+        window.location.href = './index.html' + href;
+      }
+    });
   });
-}, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  /* Scroll to hash on load */
+  if (window.location.hash) {
+    setTimeout(() => {
+      const t = document.querySelector(window.location.hash);
+      if (t) {
+        const offset = t.getBoundingClientRect().top + window.scrollY - (navbar?.offsetHeight || 0);
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    }, 450);
+  }
+
+  /* ── Project card toggle ──────────────────────────── */
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('active'));
+  });
+
+  /* ── Intersection Observer factory ───────────────── */
+  function makeObserver(selector, className, threshold = 0.12) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add(className);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold });
+
+    document.querySelectorAll(selector).forEach(el => obs.observe(el));
+  }
+
+  /* Scroll reveal (about text blocks etc.) */
+  makeObserver('.reveal', 'visible');
+
+  /* Skill cards */
+  makeObserver('.skill-glass-card', 'in-view', 0.1);
+
+  /* Category cards (projects page) */
+  makeObserver('.category-card', 'in-view', 0.1);
+
+  /* ── Pixel cursor trail (desktop only) ───────────── */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const COLORS = ['#ffc8dd', '#a78bfa', '#7fb3ff', '#2dd4bf', '#fbbf24'];
+    let trailTimer = null;
+
+    document.addEventListener('mousemove', (e) => {
+      if (trailTimer) return;           /* throttle to ~60fps */
+      trailTimer = requestAnimationFrame(() => {
+        trailTimer = null;
+        const px = document.createElement('div');
+        px.className = 'cursor-pixel';
+        px.style.left  = e.clientX + 'px';
+        px.style.top   = e.clientY + 'px';
+        px.style.background = COLORS[Math.floor(Math.random() * COLORS.length)];
+        document.body.appendChild(px);
+        /* Remove after animation completes */
+        px.addEventListener('animationend', () => px.remove());
+      });
+    });
+  }
+
+  /* ── Initial scroll event to set nav state ────────── */
+  window.dispatchEvent(new Event('scroll'));
 });
