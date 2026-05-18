@@ -8,13 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="mobile-fixes.css">
-<link rel="stylesheet" href="animations-patch.css">
+  <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-
+<div class="stars" id="stars"></div>
     <header>
       <nav class="navbar">
         <a href="index.html" class="logo">Portfolio</a>
@@ -34,26 +32,27 @@
     </header>
 
 <section id="hero">
-    <div class="hero-content">
-        <h1>Hi, I'm Hannah — Frontend Developer & UI Builder</h1>
+    <div class="hero-content reveal">
+        <h1>Hi, I'm Hannah — Full-Stack Developer & UI Builder</h1>
         <p class="headsentence">
             I build responsive websites and interactive applications using HTML, CSS, JavaScript, and Java.
             <br><br>    
             Bridging the gap between clean logic and intuitive design.
         </p>
+        <div id="hero-buttons-container" class="reveal">
+            <a href="projects.html" class="hero-nav-btn hero-primary-btn">My projects.</a>
+            <div class="hero-secondary-buttons">
+                <a href="Hana%20Wael.pdf" download="Hana_Wael_Resume" class="hero-nav-btn btn-small resume-btn">
+                    Resume 📄
+                </a>
+                <a href="https://github.com/hxnx444" target="_blank" class="hero-nav-btn btn-small github-btn" title="GitHub" aria-label="GitHub Profile">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="pixel-icon">
+                </a>
+            </div>
+        </div>
     </div>
    
     <div class="character"></div>
-    
-   <div id="hero-buttons-container">
-    <a href="projects.html" class="hero-nav-btn">My projects.</a>
-    <a href="Hana%20Wael.pdf" download="Hana_Wael_Resume" class="hero-nav-btn btn-small resume-btn">
-        Resume 📄
-    </a>
-    <a href="https://github.com/hxnx444" target="_blank" class="hero-nav-btn btn-small github-btn" title="GitHub" aria-label="GitHub Profile">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="pixel-icon">
-    </a>
-</div>
 </section>
 
 <section id="about">
@@ -119,7 +118,7 @@
     <div class="skill-glass-card">
         <div class="skill-icon">🤖</div>
         <h2 class="skill-title">AI</h2>
-        <p class="readable-text" style="margin: 0;">Upcoming...</p>
+        <p class="readable-text" style="margin: 0;">     Upcoming...</p>
     </div>
 </div>
     </div>

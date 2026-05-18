@@ -124,15 +124,6 @@
 .skill-glass-card.in-view:nth-child(3) { transition-delay: 180ms; }
 
 
-/* =====================================================
-   ABOUT SECTION — background fix
-   ===================================================== */
-#about {
-  background-attachment: scroll !important; /* kills iOS blank */
-  background-size: cover;
-  background-position: center;
-}
-
 
 /* =====================================================
    HERO SECTION — grid fix for 3 children
@@ -226,7 +217,6 @@ body.projects-page .back-nav-btn {
     padding: 100px 16px 60px !important;
     gap: 20px !important;
     min-height: 100vh !important;
-    background-attachment: scroll !important;
   }
 
   .hero-content {
@@ -277,7 +267,6 @@ body.projects-page .back-nav-btn {
   /* ── About ── */
   #about {
     padding: 80px 16px 50px !important;
-    background-attachment: scroll !important;
   }
 
   .about-glass-box {
@@ -300,7 +289,6 @@ body.projects-page .back-nav-btn {
   /* ── Skills ── */
   #skills {
     padding: 80px 16px 60px !important;
-    background-attachment: scroll !important;
     
     /* --- Mobile height expansion fix --- */
     height: auto !important; 
@@ -339,7 +327,6 @@ body.projects-page .back-nav-btn {
     height: auto !important;
     min-height: 100vh !important;
     overflow: visible !important;
-    background-attachment: scroll !important;
   }
 
   .category-grid-container {
@@ -488,13 +475,10 @@ body.projects-page .back-nav-btn {
    iOS Safari — kill all fixed backgrounds
    ===================================================== */
 @supports (-webkit-overflow-scrolling: touch) {
+  body,
   #hero,
   #about,
-  #skills,
-  #projects,
-  #contact,
-  body.algorithms-page,
-  body.projects-page {
+  #contact {
     background-attachment: scroll !important;
   }
 }
