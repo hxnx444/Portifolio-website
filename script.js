@@ -165,6 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Scroll reveal (about text blocks etc.) */
   makeObserver('.reveal', 'visible');
 
+  /* About text blocks reveal */
+  makeObserver('#about .readable-text', 'in-view', 0.1);
+
   /* Skill cards */
   makeObserver('.skill-glass-card', 'in-view', 0.1);
 

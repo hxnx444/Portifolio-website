@@ -573,6 +573,18 @@ body.algorithms-page .navbar.scrolled {
   animation: fadeUpDown 2s infinite ease-in-out 0.3s;
 }
 
+.character2 {
+  width: 100%;
+  height: 450px;
+  background-image: url("imgs/character2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  image-rendering: pixelated;
+  grid-column: 2;
+  grid-row: 1;
+}
+
 
 /* =====================================================
    7. ABOUT SECTION
@@ -583,12 +595,11 @@ body.algorithms-page .navbar.scrolled {
   background-size: cover;
   background-position: center;
   image-rendering: pixelated;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(240px, 380px);
   align-items: center;
-  padding: 50px 40px 40px;
+  gap: 2rem;
+  padding: 50px 6vw 40px;
   position: relative;
 }
 
@@ -599,11 +610,13 @@ body.algorithms-page .navbar.scrolled {
   border: 2px solid var(--color-border-pink);
   border-radius: 15px;
   max-width: 1000px;
-  width: 90%;
+  width: 100%;
   padding: clamp(30px, 5vw, 50px) clamp(30px, 8vw, 130px) clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 10;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .about-glass-box h1 {
@@ -1453,6 +1466,9 @@ body.algorithms-page .coming-soon .cs-text {
   #about {
     padding: 80px 16px 50px;
     background-attachment: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .about-glass-box {
