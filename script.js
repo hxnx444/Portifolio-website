@@ -15,9 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuToggle && navLinksContainer) {
         menuToggle.addEventListener('click', () => {
             const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            const willExpand = !isExpanded;
+            menuToggle.setAttribute('aria-expanded', willExpand);
             menuToggle.classList.toggle('is-active');
             navLinksContainer.classList.toggle('active');
+
+            // Animate using max-height for smooth open/close
+            if (navLinksContainer.classList.contains('active')) {
+                const sh = navLinksContainer.scrollHeight;
+                navLinksContainer.style.maxHeight = sh + 'px';
+            } else {
+                navLinksContainer.style.maxHeight = '0px';
+            }
+        });
+
+        // Remove inline max-height after opening to allow responsiveness
+        navLinksContainer.addEventListener('transitionend', (e) => {
+            if (e.propertyName !== 'max-height') return;
+            if (navLinksContainer.classList.contains('active')) {
+                navLinksContainer.style.maxHeight = '';
+            }
         });
     }
 

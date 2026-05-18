@@ -1,6 +1,12 @@
 /* =========================================
    1. BASE STYLES
    ========================================= */
+:root {
+  --anim-fast: 180ms;
+  --anim-mid: 360ms;
+  --anim-slow: 600ms;
+  --easing-snappy: cubic-bezier(0.2, 0.9, 0.2, 1);
+}
 html {
   scroll-behavior: smooth;
   background: radial-gradient(circle at top, rgba(173, 116, 255, 0.16), transparent 25%), #0e0b1f;
@@ -68,7 +74,7 @@ section {
   opacity: 0;
   filter: blur(4px);
   transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--anim-slow) var(--easing-snappy), transform var(--anim-slow) var(--easing-snappy), filter var(--anim-slow) var(--easing-snappy);
 }
 
 .show {
@@ -1146,27 +1152,7 @@ body.algorithms-page .card-btn.secondary:hover {
   50% { opacity: 1; }
 }
 
-/* =========================================
-   9. CHARACTERS & DECOR
-   ========================================= */
-.character,
-.character2,
-.character3,
-.character4 {
-  image-rendering: pixelated;
-  background-image: url("imgs/pixellab--Pixel-art-character-in-8-bit--1771427072388.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  width: 280px;
-  height: 320px;
-  bottom: 40px;
-  pointer-events: none;
-  animation: jump 5s ease-in-out infinite;
-}
+
 
 
 .scroll-indicator {
@@ -1338,5 +1324,14 @@ body.algorithms-page .card-btn.secondary:hover {
     width: 100%;
     box-sizing: border-box;
     min-width: unset;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
