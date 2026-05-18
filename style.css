@@ -268,7 +268,7 @@ body.algorithms-page .navbar.scrolled {
   align-items: center;
   padding: 10px;
   color: #fef3fb;
-  font-size: 30px;
+  font-size: clamp(20px, 4vw, 30px);
   font-family: "Press Start 2P", cursive;
   text-decoration: none;
 }
@@ -288,7 +288,7 @@ body.algorithms-page .navbar.scrolled {
 .nav-links a,
 .navbar a {
   color: #fef3fb;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: bold;
   font-family: "Pixelify Sans", monospace;
   text-decoration: none;
@@ -329,9 +329,9 @@ body.algorithms-page .navbar.scrolled {
   border-radius: 15px;
   color: #fef3fb;
   font-family: "Pixelify Sans", monospace;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: bold;
-  padding: 10px 25px;
+  padding: clamp(8px, 2vw, 10px) clamp(16px, 4vw, 25px);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -529,7 +529,7 @@ body.algorithms-page .navbar.scrolled {
   color: #fef3fb;
   font-weight: 500;
   text-align: left;
-  font-size: 26px;        /* was 36px */
+  font-size: clamp(20px, 4vw, 28px);
   line-height: 1.8;
   text-shadow: 3px 3px 0px #1d0554;
 }
@@ -537,7 +537,7 @@ body.algorithms-page .navbar.scrolled {
 .headsentence {
   font-family: "Press Start 2P", cursive;
   color: #fef3fb;
-  font-size: 16px;        /* was 24px */
+  font-size: clamp(14px, 3vw, 16px);
   margin-top: 20px;
   line-height: 1.8;
   text-shadow: 2px 2px 0px #4a1e5d, -1px -1px 0px #4a1e5d,
@@ -583,7 +583,7 @@ body.algorithms-page .navbar.scrolled {
   border-radius: 15px;
   max-width: 1000px;
   width: 90%;
-  padding: 50px 130px 50px 50px;
+  padding: clamp(30px, 5vw, 50px) clamp(30px, 8vw, 130px) clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 10;
@@ -603,16 +603,11 @@ body.algorithms-page .navbar.scrolled {
 .reveal:nth-child(2) { transition-delay: 0.07s; }
 .reveal:nth-child(3) { transition-delay: 0.14s; }
 .reveal:nth-child(4) { transition-delay: 0.21s; }
-@media (max-width: 768px) {
-  .about-glass-box {
-    padding: 40px 30px;
-  }
-}
 
 .about-glass-box h1 {
   font-family: "Press Start 2P", cursive;
   color: #fef3fb;
-  font-size: 28px;
+  font-size: clamp(22px, 4vw, 28px);
   margin-top: 0;
   margin-bottom: 30px;
   text-shadow: 3px 3px 0px #1d0554;
@@ -628,7 +623,7 @@ body.algorithms-page .navbar.scrolled {
 .readable-text {
   font-family: "Space Mono", monospace !important;
   color: #ffc8dd;
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   line-height: 1.8;
   margin: 0;
   text-align: left;
@@ -664,7 +659,7 @@ body.algorithms-page .navbar.scrolled {
 .skills h1 {
   font-family: "Press Start 2P", cursive;
   color: #fef3fb;
-  font-size: 28px;
+  font-size: clamp(22px, 4vw, 28px);
   margin-bottom: 40px;
   text-shadow: 3px 3px 0px #020a24;
   text-align: center;
@@ -687,7 +682,8 @@ body.algorithms-page .navbar.scrolled {
   -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(127, 179, 255, 0.3);
   border-radius: 15px;
-  width: 280px;
+  width: 100%;
+  max-width: 320px;
   padding: 35px 25px;
   text-align: left;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -766,7 +762,7 @@ body.algorithms-page .navbar.scrolled {
   padding: 20px;
   font-family: "Press Start 2P", cursive;
   color: #fef3fb;
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 24px);
   text-shadow: 3px 3px 0px #1d0554;
   margin: 0;
   text-align: center;
@@ -1004,12 +1000,12 @@ body.algorithms-page .navbar.scrolled {
   margin-bottom: 20px;
   color: #fef3fb;
   text-shadow: 3px 3px 0px #1d0554;
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 24px);
 }
 
 .contact-box p {
   font-family: "Pixelify Sans", sans-serif;
-  font-size: 18px;
+  font-size: clamp(15px, 3vw, 18px);
   margin-bottom: 30px;
   line-height: 1.5;
   color: #cfe8ff;
@@ -1356,20 +1352,10 @@ body.algorithms-page .card-btn.secondary:hover {
     padding: 15px 20px;
   }
 
-  .nav-links {
-    gap: 10px 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-links a {
-    font-size: 14px;
-  }
-
   #hero {
     display: flex;
     flex-direction: column;
-    padding: 180px 20px 120px 20px;
+    padding: 120px 20px 80px 20px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -1378,13 +1364,8 @@ body.algorithms-page .card-btn.secondary:hover {
     background-repeat: no-repeat;
   }
 
-  .hero-content h1 {
-    font-size: 32px;
-    line-height: 1.4;
-  }
-
-  .headsentence {
-    font-size: 16px;
+  #hero-buttons-container {
+    justify-content: center;
   }
 
   #about,
@@ -1450,18 +1431,6 @@ body.algorithms-page .card-btn.secondary:hover {
 }
 
 @media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 24px;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-  }
-
-  .contact-box h1 {
-    font-size: 20px;
-  }
-
   .contact-links {
     flex-direction: column;
     align-items: center;
