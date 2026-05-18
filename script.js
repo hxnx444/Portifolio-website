@@ -8,6 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectCards = document.querySelectorAll('.project-card');
     const starsEl = document.getElementById('stars');
 
+    // Mobile menu elements
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinksContainer) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.classList.toggle('is-active');
+            navLinksContainer.classList.toggle('active');
+        });
+    }
+
     if (starsEl) {
         for (let i = 0; i < 80; i++) {
             const s = document.createElement('div');
@@ -70,6 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
+            
+            // Close mobile menu if open when a link is clicked
+            if (menuToggle && menuToggle.classList.contains('is-active')) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.classList.remove('is-active');
+                if (navLinksContainer) navLinksContainer.classList.remove('active');
+            }
             
           
             if (targetId.startsWith('#')) {

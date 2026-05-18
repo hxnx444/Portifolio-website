@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,6 +9,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
+<style>
+    /* Mobile Navigation Core Styles */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+    }
+    .menu-toggle .bar {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    @media (max-width: 768px) {
+        .menu-toggle { display: flex; }
+        .nav-links { display: none; }
+        .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; right: 0; background: rgba(14, 11, 31, 0.95); width: 100%; padding: 1rem 0; text-align: center; }
+    }
+</style>
 </head>
 <body class="algorithms-page">
 
@@ -17,6 +43,11 @@
 <header>
   <nav class="navbar">
     <a href="index.html" class="logo">Portfolio</a>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
     <ul class="nav-links">
       <li><a href="index.html#hero">Home</a></li>
       <li><a href="algorithms.html">Algorithms</a></li>

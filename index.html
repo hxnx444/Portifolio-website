@@ -11,12 +11,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <style>
+        /* Mobile Navigation Core Styles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu-toggle .bar {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links { display: none; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; right: 0; background: rgba(14, 11, 31, 0.95); width: 100%; padding: 1rem 0; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <nav class="navbar"> 
             <a href="index.html" class="logo">Portfolio</a>
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -41,10 +72,10 @@
     
    <div id="hero-buttons-container">
     <a href="projects.html" class="hero-nav-btn">My projects.</a>
-    <a href="Hana Wael.pdf" download="Hana_Wael_Resume" class="hero-nav-btn btn-small resume-btn">
+    <a href="Hana%20Wael.pdf" download="Hana_Wael_Resume" class="hero-nav-btn btn-small resume-btn">
         Resume 📄
     </a>
-    <a href="https://github.com/hxnx444" target="_blank" class="hero-nav-btn btn-small github-btn" title="GitHub">
+    <a href="https://github.com/hxnx444" target="_blank" class="hero-nav-btn btn-small github-btn" title="GitHub" aria-label="GitHub Profile">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="pixel-icon">
     </a>
 </div>
@@ -120,7 +151,7 @@
         <div class="contact-links">
             <a href="mailto:hannahtag186@gmail.com" class="contact-btn">Email 📧</a>
             <a href="https://github.com/hxnx444" target="_blank" class="contact-btn">GitHub 🐙</a>
-            <a href="https://www.instagram.com/hxnx444/" target="_blank" class="contact-btn">Instagram 📸</a>
+            <a href="https://www.instagram.com/hxnx_444/" target="_blank" class="contact-btn">Instagram 📸</a>
         </div>
     </div>
 </section>
