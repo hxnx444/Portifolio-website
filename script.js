@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Mobile menu ──────────────────────────────────── */
   if (menuToggle && navLinksContainer) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const willExpand = menuToggle.getAttribute('aria-expanded') !== 'true';
       menuToggle.setAttribute('aria-expanded', willExpand);
       menuToggle.classList.toggle('is-active');
@@ -27,12 +28,28 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinksContainer.style.maxHeight = '';
       }
     });
+
+      /* Close menu when clicking outside */
+      document.addEventListener('click', (e) => {
+        if (navLinksContainer.classList.contains('active') && !navbar.contains(e.target)) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.classList.remove('is-active');
+          navLinksContainer.classList.remove('active');
+          navLinksContainer.style.maxHeight = '0px';
+        }
+      });
   }
 
   /* ── Stars ────────────────────────────────────────── */
   if (starsEl) {
-    const STAR_COUNT     = 90;
-    const SHOOTING_COUNT = 4;
+    let STAR_COUNT     = 90;
+    let SHOOTING_COUNT = 4;
+
+    /* Reduce star density on touch/low-power devices */
+    if ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches) {
+      STAR_COUNT = 28;
+      SHOOTING_COUNT = 1;
+    }
 
     for (let i = 0; i < STAR_COUNT; i++) {
       const s = document.createElement('div');
@@ -79,30 +96,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Navbar scroll behaviour ──────────────────────── */
   if (navbar) {
+    let isScrolling = false;
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          navbar.classList.toggle('scrolled', window.scrollY > 50);
 
-      const navCenter = navbar.getBoundingClientRect().top + navbar.offsetHeight / 2;
-      let makeNavy = false;
+          const navCenter = navbar.getBoundingClientRect().top + navbar.offsetHeight / 2;
+          let makeNavy = false;
 
-      ['skills', 'contact'].forEach(id => {
-        const sec = document.getElementById(id);
-        if (!sec) return;
-        const r = sec.getBoundingClientRect();
-        if (r.top <= navCenter && r.bottom >= navCenter) makeNavy = true;
-      });
+          ['skills', 'contact'].forEach(id => {
+            const sec = document.getElementById(id);
+            if (!sec) return;
+            const r = sec.getBoundingClientRect();
+            if (r.top <= navCenter && r.bottom >= navCenter) makeNavy = true;
+          });
 
-      navbar.classList.toggle('navy-nav', makeNavy);
+          navbar.classList.toggle('navy-nav', makeNavy);
 
-      /* Active link */
-      let current = '';
-      document.querySelectorAll('section[id]').forEach(s => {
-        if (window.scrollY >= s.offsetTop - 200) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', current && a.getAttribute('href') === `#${current}`);
-      });
-    });
+          /* Active link */
+          let current = '';
+          document.querySelectorAll('section[id]').forEach(s => {
+            if (window.scrollY >= s.offsetTop - 200) current = s.id;
+          });
+          navLinks.forEach(a => {
+            a.classList.toggle('active', current && a.getAttribute('href') === `#${current}`);
+          });
+          isScrolling = false;
+        });
+        isScrolling = true;
+      }
+    }, { passive: true });
   }
 
   /* ── Smooth-scroll & mobile menu close ───────────── */
@@ -173,6 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Category cards (projects page) */
   makeObserver('.category-card', 'in-view', 0.1);
+
+  /* Project cards, Contact box, About box for unified animations */
+  makeObserver('.project-card', 'in-view', 0.1);
+  makeObserver('.contact-box', 'in-view', 0.1);
+  makeObserver('.about-glass-box', 'in-view', 0.1);
 
   /* ── Pixel cursor trail (desktop only) ───────────── */
   if (window.matchMedia('(pointer: fine)').matches) {
