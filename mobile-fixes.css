@@ -10,7 +10,7 @@
 
 /* The section itself needs to fully show the pixel bg */
 #skills {
-  background-image: url("imgs/skills.png");
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,6 +29,13 @@
   flex-direction: column;
   justify-content: center;
 }
+#skills, 
+  .skills, 
+  .skills-container {
+    height: auto !important; 
+    max-height: none !important;
+    overflow: visible !important;
+  }
 
 /* Dark overlay so the pixel art reads through but cards stay legible */
 #skills::before {
