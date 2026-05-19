@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ══════════════════════════════════════════════ */
   const navbar = document.querySelector('.navbar');
   const navLinks = document.querySelectorAll('.nav-links a');
-  const DARK_SECTIONS = new Set(['skills', 'contact']);
+  const DARK_SECTIONS = new Set(['skills', 'contact', 'projects']);
 
   if (navbar) {
     let ticking = false;
@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      navbar.classList.toggle('nav-dark', DARK_SECTIONS.has(currentSection));
+      const isDarkThemePage = document.body.classList.contains('dark-theme-page');
+      navbar.classList.toggle('nav-dark', DARK_SECTIONS.has(currentSection) || isDarkThemePage);
 
       navLinks.forEach(link => {
         const href = link.getAttribute('href') || '';
