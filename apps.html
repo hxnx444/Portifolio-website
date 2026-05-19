@@ -1,27 +1,28 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apps | Hannah</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desktop Apps | Hana Wael</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body class="algorithms-page">
 
-<div class="stars" id="stars"></div>
+<div class="bg-layer"></div>
+<div id="stars"></div>
 
 <header>
   <nav class="navbar">
-    <a href="index.html" class="logo">Hannah.</a>
-    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <a href="index.html" class="logo">Hana.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </button>
     <ul class="nav-links">
       <li><a href="index.html#hero">Home</a></li>
@@ -31,24 +32,25 @@
     </ul>
   </nav>
 </header>
+
 <a href="projects.html" class="back-nav-btn">← Projects</a>
+
 <main class="page">
 
   <div class="page-header">
     <h1>🖥️ Desktop <span>Applications</span></h1>
-    <p class="subtitle">Java-based business applications and UI tools designed to showcase clean workflow design, state management, and system automation.</p>
+    <p class="subtitle">Java-based business applications and UI tools showcasing clean workflow design, state management, and system automation.</p>
     <div class="pixel-divider">
       <div class="line"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
       <div class="line"></div>
     </div>
   </div>
 
-  <div class="section-label">projects</div>
+  <span class="section-label">projects</span>
   <div class="projects-grid">
 
+    <!-- Featured: Hotel System UI -->
     <div class="project-card featured">
       <div class="card-left">
         <span class="card-icon">🏨</span>
@@ -65,12 +67,12 @@
         </ul>
         <div class="tech-pills">
           <span class="pill">Java</span>
+          <span class="pill">JavaFX</span>
           <span class="pill">UI Design</span>
           <span class="pill">Hotel Management</span>
-          <span class="pill">Workflow</span>
         </div>
         <div class="card-links">
-          <a href="https://github.com/hxnx444/Hotel-System-UI-" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+          <a href="https://github.com/hxnx444/Hotel-System-UI-" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
         </div>
       </div>
       <div class="card-right">
@@ -79,7 +81,7 @@
           <span class="concept-icon">🛎️</span>
           <div class="concept-text">
             <strong>Guest Experience</strong>
-            Supports booking workflows, room status updates, and guest record handling with clear interface flow.
+            Booking workflows, room status updates, and guest record handling with clear interface flow.
           </div>
         </div>
         <div class="concept-row">
@@ -93,33 +95,34 @@
           <span class="concept-icon">🧾</span>
           <div class="concept-text">
             <strong>Operational UI</strong>
-            Focuses on a polished user interface for staff systems and check-in/out routines.
+            Polished user interface for staff systems and check-in/out routines built on JavaFX.
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Library Management -->
     <div class="project-card">
       <span class="card-icon">📚</span>
       <span class="card-tag">Library System</span>
       <h2 class="card-title">Library Management System</h2>
       <p class="card-desc">
-        Java library system for managing book inventory, lending workflows, member activity, and borrowing history in a clean operational UI.
+        Java library system for managing book inventory, lending workflows, member activity, and borrowing history in a clean operational UI with database persistence.
       </p>
       <ul class="card-highlights">
         <li>Book cataloging and availability tracking</li>
-        <li>Member registration and loan management</li>
+        <li>Member registration and loan management (500+ records)</li>
         <li>Due date reminders and return handling</li>
-        <li>Java OOP-driven business workflow</li>
+        <li>SQLite/MySQL relational database integration</li>
       </ul>
       <div class="tech-pills">
         <span class="pill">Java</span>
-        <span class="pill">Library System</span>
+        <span class="pill">JavaFX</span>
+        <span class="pill">SQLite</span>
         <span class="pill">OOP</span>
-        <span class="pill">Data Management</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/hxnx444/Library-System" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+        <a href="https://github.com/hxnx444/Library-System" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
       </div>
     </div>
 
@@ -130,5 +133,10 @@
 
   </div>
 </main>
+
+<footer>
+  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2025 ✦</p>
+</footer>
+
 </body>
 </html>

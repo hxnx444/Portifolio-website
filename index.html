@@ -1,142 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Hannah</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hana Wael — Frontend Developer</title>
+  <meta name="description" content="Hana Wael — CS student & frontend developer building interfaces that feel alive. HTML, CSS, JavaScript, React, Java.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+ 
+  <script src="script.js" defer></script>
 </head>
 <body>
-<div class="stars" id="stars"></div>
-    <header>
-      <nav class="navbar">
-        <a href="index.html" class="logo">Portfolio</a>
-        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-       
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
 
-<section id="hero">
-    <div class="hero-content reveal">
-        <h1>Hi, I'm Hannah — Full-Stack Developer & UI Builder</h1>
-        <p class="headsentence">
-            I build responsive websites and interactive applications using HTML, CSS, JavaScript, and Java.
-            <br><br>    
-            Bridging the gap between clean logic and intuitive design.
-        </p>
-        <div id="hero-buttons-container" class="reveal">
-            <a href="projects.html" class="hero-nav-btn hero-primary-btn">My projects.</a>
-            <div class="hero-secondary-buttons">
-                <a href="Hana%20Wael.pdf" download="Hana_Wael_Resume" class="hero-nav-btn btn-small resume-btn">
-                    Resume 📄
-                </a>
-                <a href="https://github.com/hxnx444" target="_blank" class="hero-nav-btn btn-small github-btn" title="GitHub" aria-label="GitHub Profile">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="pixel-icon">
-                </a>
-            </div>
-        </div>
+<!-- Backgrounds -->
+<div class="bg-layer" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"></div>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="#hero" class="logo" aria-label="Hana — home">Hana.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" role="list">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+    
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero-about-wrapper">
+  
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="pixel-sun" aria-hidden="true"></div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" aria-label="Introduction">
+  <p class="hero-eyebrow">✦ &nbsp;Frontend Developer &nbsp;✦ &nbsp;CS Student &nbsp;✦</p>
+
+  <div class="hero-content">
+    <h1>
+      Hi, I'm <span class="accent">Hana</span> —<br>
+      I build <span class="accent2">interfaces</span><br>
+      that feel alive.
+    </h1>
+    <p class="hero-sub">
+      Responsive websites · interactive UIs · clean architecture.<br>
+      Code that's readable. Design that guides.<span class="cursor" aria-hidden="true"></span>
+    </p>
+  </div>
+
+  <div id="hero-buttons-container">
+    <a href="projects.html" class="hero-nav-btn hero-primary-btn">My Projects ✦</a>
+    <div class="hero-secondary-buttons">
+      <a href="imgs/Resume.pdf" download="Hana_Wael_Resume" class="hero-nav-btn btn-small resume-btn">Resume 📄</a>
+      <a href="https://github.com/hxnx444" target="_blank" rel="noopener noreferrer"
+         class="hero-nav-btn btn-small github-btn" aria-label="GitHub profile">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+             alt="" class="pixel-icon" aria-hidden="true">
+      </a>
     </div>
-   
-    <div class="character"></div>
+  </div>
+
+  <div class="status-badge" role="status">
+    <span class="status-dot" aria-hidden="true"></span>
+    Open to internships &amp; junior roles
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span class="scroll-arrow">▾</span>
+    scroll
+  </div>
 </section>
 
-<section id="about">
-    <div class="about-glass-box">
-        <h1>About me</h1>
-        
-        <div class="about-text-blocks">
-            <p class="readable-text">I’m a Computer Science student and Frontend Developer passionate about turning complex ideas into seamless digital experiences.</p>
-            
-            <p class="readable-text">My work lives at the intersection of logic and aesthetics, where clean architecture meets intentional design. Using tools like Figma alongside HTML, CSS, and JavaScript, I build interfaces that feel intuitive, responsive, and visually refined.</p>
-            
-            <p class="readable-text">I care deeply about readability, spacing, and user flow because great design shouldn't fight for attention. Every detail should guide the experience naturally.</p>
-            
-            <p class="readable-text highlight-text">> Currently exploring Artificial Intelligence and modern web technologies to push the boundaries of interactive experiences.</p>
-        </div>
-        
-        
+<!-- ═══ ABOUT ═══ -->
+<section id="about" aria-label="About me">
+  <div class="about-glass-box reveal">
+    <h2>About me</h2>
+    <div class="about-text-blocks">
+      <p class="readable-text">
+        I'm a Computer Science student at Alexandria University and a Frontend Developer passionate about turning complex ideas into seamless digital experiences.
+      </p>
+      <p class="readable-text">
+        My work lives at the intersection of logic and aesthetics — where clean architecture meets intentional design. I use Figma alongside HTML, CSS, and JavaScript to build interfaces that feel intuitive, responsive, and visually refined.
+      </p>
+      <p class="readable-text">
+        I care deeply about readability, spacing, and user flow. Great design shouldn't fight for attention — every detail should guide the experience naturally.
+      </p>
+      <p class="readable-text highlight-text">
+        &gt; Currently exploring React, Node.js, and AI-integrated web experiences.
+      </p>
     </div>
-    <div class="character2"></div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span class="scroll-arrow">▾</span>
+    scroll
+  </div>
 </section>
-   <section id="skills">
-    <div class="stars"></div>
-    <div class="skills">
-        <h1>Technical skills</h1>
-        
-   <div class="skills-container">
-    <div class="skill-glass-card">
-        <div class="skill-icon">✨</div>
-        <h2 class="skill-title">Frontend & UI</h2>
-        <ul class="skills-list">
-            <li>HTML5 & CSS3</li>
-            <li>JavaScript (ES6+)</li>
-            <li>Responsive Design</li>
-            <li>Figma & Adobe XD</li>
-            <li>React.js & Vue.js</li>
-        </ul>
-    </div>
 
-    <div class="skill-glass-card">
-        <div class="skill-icon">🧠</div>
-        <h2 class="skill-title">Core & AI</h2>
-        <ul class="skills-list">
-            <li>Java & JavaFX</li>
-            <li>Data Structures</li>
-            <li>Python</li>
-            <li>PHP & MySQL</li>
-            <li>AI Concepts</li>
-        </ul>
-    </div>
-
-    <div class="skill-glass-card">
-        <div class="skill-icon">🛠️</div>
-        <h2 class="skill-title">Tools</h2>
-        <ul class="skills-list">
-            <li>Git & GitHub</li>
-            <li>VS Code</li>
-            <li>IntelliJ IDEA</li>
-            <li>Chrome DevTools</li>
-            <li>Code Structuring</li>
-        </ul>
-    </div>
-
-    <div class="skill-glass-card">
-        <div class="skill-icon">🤖</div>
-        <h2 class="skill-title">AI</h2>
-        <p class="readable-text" style="margin: 0;">     Upcoming...</p>
-    </div>
 </div>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills" aria-label="Technical skills">
+  <div class="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+
+      <div class="skill-glass-card">
+        <span class="skill-icon" aria-hidden="true">✨</span>
+        <h3 class="skill-title">Frontend &amp; UI</h3>
+        <ul class="skills-list" role="list">
+          <li>HTML5 &amp; CSS3</li>
+          <li>JavaScript (ES6+)</li>
+          <li>React.js</li>
+          <li>Responsive Design</li>
+          <li>CSS Animations</li>
+        </ul>
+      </div>
+
+      <div class="skill-glass-card">
+        <span class="skill-icon" aria-hidden="true">🧠</span>
+        <h3 class="skill-title">Core &amp; Backend</h3>
+        <ul class="skills-list" role="list">
+          <li>Java &amp; JavaFX</li>
+          <li>Node.js</li>
+          <li>Python</li>
+          <li>PHP &amp; MySQL</li>
+          <li>OOP &amp; Data Structures</li>
+        </ul>
+      </div>
+
+      <div class="skill-glass-card">
+        <span class="skill-icon" aria-hidden="true">🎨</span>
+        <h3 class="skill-title">Design</h3>
+        <ul class="skills-list" role="list">
+          <li>Figma</li>
+          <li>Adobe XD</li>
+          <li>UI/UX Fundamentals</li>
+          <li>HCI Principles</li>
+          <li>Pixel Art</li>
+        </ul>
+      </div>
+
+      <div class="skill-glass-card">
+        <span class="skill-icon" aria-hidden="true">🛠️</span>
+        <h3 class="skill-title">Tools</h3>
+        <ul class="skills-list" role="list">
+          <li>Git &amp; GitHub</li>
+          <li>VS Code</li>
+          <li>IntelliJ IDEA</li>
+          <li>Chrome DevTools</li>
+          <li>RESTful APIs</li>
+        </ul>
+      </div>
+
+      <div class="skill-glass-card">
+        <span class="skill-icon" aria-hidden="true">🤖</span>
+        <h3 class="skill-title">AI &amp; Math</h3>
+        <ul class="skills-list" role="list">
+          <li>Data Structures</li>
+          <li>Linear Algebra</li>
+          <li>Probability &amp; Stats</li>
+          <li>Calculus</li>
+          <li>More to come...</li>
+        </ul>
+      </div>
+
     </div>
+  </div>
 </section>
-   <section id="contact">
-    <div class="contact-box">
-        <h1>Contact Me</h1>
-        <p class="readable-text">Ready to start a new quest? <br>
-        Open to internships and junior developer opportunities! <br> 
-        Available for immediate collaboration and Freelancing.</p>
-        
-        <div class="contact-links">
-            <a href="mailto:hannahtag186@gmail.com" class="contact-btn">Email 📧</a>
-            <a href="https://github.com/hxnx444" target="_blank" class="contact-btn">GitHub 🐙</a>
-            <a href="https://www.instagram.com/hxnx_444/" target="_blank" class="contact-btn">Instagram 📸</a>
-        </div>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" aria-label="Contact">
+  <div class="contact-box reveal">
+    <h2>Let's Connect</h2>
+    <p>
+      Ready to start something new?<br>
+      Open to internships, junior developer roles,<br>
+      and freelance collaboration. ✦
+    </p>
+    <div class="contact-links">
+      <a href="mailto:hanawaeltag12@gmail.com" class="contact-btn">Email 📧</a>
+      <a href="https://github.com/hxnx444" target="_blank" rel="noopener noreferrer" class="contact-btn">GitHub 🐙</a>
+      <a href="https://www.instagram.com/hxnx444/" target="_blank" rel="noopener noreferrer" class="contact-btn">Instagram 📸</a>
     </div>
+  </div>
 </section>
+
+<footer>
+  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2025 ✦</p>
+</footer>
 
 </body>
 </html>

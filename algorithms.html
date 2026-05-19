@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algorithms & CS | Hannah</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithms & CS | Hana Wael</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="script.js" defer></script>
 </head>
 <body class="algorithms-page">
 
-<!-- starfield -->
-<div class="stars" id="stars"></div>
+<div class="bg-layer"></div>
+<div id="stars"></div>
 
-<!-- navbar -->
 <header>
   <nav class="navbar">
-    <a href="index.html" class="logo">Hannah.</a>
-    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <a href="index.html" class="logo">Hana.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </button>
     <ul class="nav-links">
       <li><a href="index.html#hero">Home</a></li>
@@ -32,28 +32,25 @@
     </ul>
   </nav>
 </header>
+
 <a href="projects.html" class="back-nav-btn">← Projects</a>
+
 <main class="page">
 
-  <!-- header -->
-  
   <div class="page-header">
-    <h1>🧠 Algorithms & <span>Computer Science</span></h1>
+    <h1>🧠 Algorithms &amp; <span>Computer Science</span></h1>
     <p class="subtitle">Deep logic work — from formal language theory to cryptography. These projects prove I understand what's under the hood.</p>
     <div class="pixel-divider">
       <div class="line"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
       <div class="line"></div>
     </div>
   </div>
 
-  <!-- projects -->
-  <div class="section-label">projects</div>
+  <span class="section-label">projects</span>
   <div class="projects-grid">
 
-    <!-- NFA to DFA — featured -->
+    <!-- Featured: NFA → DFA -->
     <div class="project-card featured">
       <div class="card-left">
         <span class="card-icon">🤖</span>
@@ -64,7 +61,7 @@
         </p>
         <ul class="card-highlights">
           <li>Parses regex into NFA using Thompson's construction</li>
-          <li>Converts NFA → DFA using subset construction algorithm</li>
+          <li>Converts NFA → DFA via subset construction algorithm</li>
           <li>Minimizes DFA using Hopcroft's algorithm</li>
           <li>Generates Graphviz DOT files for visual state diagrams</li>
         </ul>
@@ -76,7 +73,7 @@
           <span class="pill">Graph Algorithms</span>
         </div>
         <div class="card-links">
-          <a href="https://github.com/hxnx444/NFA-to-DFA" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+          <a href="https://github.com/hxnx444/NFA-to-DFA" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
         </div>
       </div>
       <div class="card-right">
@@ -85,7 +82,7 @@
           <span class="concept-icon">⚙️</span>
           <div class="concept-text">
             <strong>Thompson's Construction</strong>
-            Converts a Regular Expression into an NFA using a recursive algorithm with epsilon transitions.
+            Converts a regex into an NFA using a recursive algorithm with epsilon transitions.
           </div>
         </div>
         <div class="concept-row">
@@ -99,7 +96,7 @@
           <span class="concept-icon">✂️</span>
           <div class="concept-text">
             <strong>DFA Minimization</strong>
-            Reduces the number of states by merging equivalent states using partition refinement.
+            Reduces states by merging equivalents using partition refinement (Hopcroft's).
           </div>
         </div>
         <div class="concept-row">
@@ -116,15 +113,15 @@
     <div class="project-card">
       <span class="card-icon">🔐</span>
       <span class="card-tag">Cryptography</span>
-      <h2 class="card-title">Encryption Project</h2>
+      <h2 class="card-title">Encryption Suite</h2>
       <p class="card-desc">
-        Java encryption suite built from scratch with classical ciphers and symmetric algorithm logic. Demonstrates how secure data is transformed using custom cipher workflows, bitwise operations, and key-based encoding.
+        Java encryption suite built from scratch with classical ciphers and symmetric algorithm logic. Demonstrates secure data transformation using custom cipher workflows, bitwise operations, and key-based encoding.
       </p>
       <ul class="card-highlights">
-        <li>Caesar & Vigenère cipher implementations</li>
+        <li>Caesar &amp; Vigenère cipher implementations</li>
         <li>Symmetric key operations with XOR and padding</li>
         <li>Custom bitwise transformation logic</li>
-        <li>Hands-on cryptography foundations for secure data processing</li>
+        <li>Hands-on cryptography foundations</li>
       </ul>
       <div class="tech-pills">
         <span class="pill">Java</span>
@@ -133,10 +130,11 @@
         <span class="pill">Algorithms</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/hxnx444/Encryption" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+        <a href="https://github.com/hxnx444/Encryption" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
       </div>
     </div>
 
+    <!-- Hotel Management -->
     <div class="project-card">
       <span class="card-icon">🏨</span>
       <span class="card-tag">Java Systems</span>
@@ -148,27 +146,30 @@
         <li>Room booking and reservation management</li>
         <li>Guest check-in/check-out workflows</li>
         <li>Room availability and billing logic</li>
-        <li>Data handling with Java object-oriented architecture</li>
+        <li>Clean OOP architecture throughout</li>
       </ul>
       <div class="tech-pills">
         <span class="pill">Java</span>
-        <span class="pill">Hotel Management</span>
         <span class="pill">OOP</span>
         <span class="pill">Business Logic</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/hxnx444/hotel-management-system-java" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+        <a href="https://github.com/hxnx444/hotel-management-system-java" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
       </div>
     </div>
 
-    <!-- coming soon -->
+    <!-- Coming soon -->
     <div class="project-card coming-soon">
       <span class="cs-icon">⬡</span>
       <p class="cs-text">more projects<br>coming soon...</p>
     </div>
 
   </div>
-
 </main>
+
+<footer>
+  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2025 ✦</p>
+</footer>
+
 </body>
 </html>

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Websites | Hannah</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-
-<script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Websites | Hana Wael</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="script.js" defer></script>
 </head>
 <body class="algorithms-page">
 
-<div class="stars" id="stars"></div>
+<div class="bg-layer"></div>
+<div id="stars"></div>
 
 <header>
   <nav class="navbar">
-    <a href="index.html" class="logo">Hannah.</a>
-    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <a href="index.html" class="logo">Hana.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </button>
     <ul class="nav-links">
       <li><a href="index.html#hero">Home</a></li>
@@ -31,87 +32,88 @@
     </ul>
   </nav>
 </header>
+
 <a href="projects.html" class="back-nav-btn">← Projects</a>
+
 <main class="page">
-  
+
   <div class="page-header">
-    <p class="page-category-descriptor">JS</p>
     <h1>🌐 Web <span>Experiences</span></h1>
     <p class="subtitle">Responsive interfaces, interactive layouts, and visually engaging frontend projects built using modern web standards.</p>
     <div class="pixel-divider">
       <div class="line"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
       <div class="line"></div>
     </div>
   </div>
 
-  <div class="section-label">projects</div>
+  <span class="section-label">projects</span>
   <div class="projects-grid">
 
+    <!-- Featured: Aura Vision -->
     <div class="project-card featured">
       <div class="card-left">
         <span class="card-icon">🔮</span>
         <span class="card-tag">Full-Stack / UI</span>
         <h2 class="card-title">Aura Vision Board</h2>
         <p class="card-desc">
-          A personal growth platform designed to help visualize goals, track progress, and complete interactive quests. Features a clean, intentional user interface.
+          A full-stack personal growth platform with interactive React components connected to a Node.js backend. Dynamic state management, scalable architecture, and polished CSS animations.
         </p>
         <ul class="card-highlights">
-          <li>Interactive vision board components</li>
-          <li>Goal tracking and quest management workflows</li>
-          <li>Engaging, responsive layout design</li>
-          <li>Focus on intuitive user experience</li>
+          <li>React components + Node.js backend integration</li>
+          <li>Dynamic state management &amp; scalable architecture</li>
+          <li>Goal tracking and interactive quest workflows</li>
+          <li>Responsive design across all screen sizes</li>
         </ul>
         <div class="tech-pills">
-          <span class="pill">HTML5</span>
-          <span class="pill">CSS3</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">UI/UX</span>
+          <span class="pill">React</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">CSS Animations</span>
+          <span class="pill">Responsive</span>
         </div>
         <div class="card-links">
-          <a href="https://github.com/hxnx444/Aura-vision-board-website" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+          <a href="https://github.com/hxnx444/Aura-vision-board-website" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
         </div>
       </div>
       <div class="card-right">
         <div class="card-right-title">// concepts used</div>
         <div class="concept-row">
-          <span class="concept-icon">🎨</span>
+          <span class="concept-icon">⚛️</span>
           <div class="concept-text">
-            <strong>Visual Design</strong>
-            Creates an aesthetic and calming environment to inspire personal growth and motivation.
+            <strong>Component Architecture</strong>
+            Reusable React components with structured state management to minimize rendering overhead.
           </div>
         </div>
         <div class="concept-row">
           <span class="concept-icon">🔄</span>
           <div class="concept-text">
-            <strong>Interactive Elements</strong>
-            Uses JavaScript to drive interactive components like quest checking and progress updates.
+            <strong>Full-Stack Integration</strong>
+            React frontend communicates with a Node.js backend via RESTful API endpoints.
           </div>
         </div>
         <div class="concept-row">
           <span class="concept-icon">📱</span>
           <div class="concept-text">
             <strong>Responsive UI</strong>
-            Adapts seamlessly across different screen sizes for a consistent user experience.
+            CSS Grid/Flexbox + media queries for a seamless experience across all devices.
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Travel Quest -->
     <div class="project-card">
       <span class="card-icon">✈️</span>
       <span class="card-tag">Frontend</span>
       <h2 class="card-title">Travel Quest</h2>
       <p class="card-desc">
-        A responsive, multi-page travel platform featuring animated UI components, designed to showcase destinations and inspire journeys.
+        A responsive, multi-page travel platform featuring animated UI components, optimized DOM structure, and seamless performance across all screen sizes.
       </p>
       <ul class="card-highlights">
-        <li>Multi-page navigation and structure</li>
+        <li>Multi-page navigation with custom interactions</li>
         <li>Smooth CSS animations and transitions</li>
-        <li>Responsive design for mobile and desktop</li>
-        <li>Pixel-perfect UI implementation</li>
+        <li>Optimized DOM structure for fast load</li>
+        <li>Pixel-perfect responsive implementation</li>
       </ul>
       <div class="tech-pills">
         <span class="pill">HTML5</span>
@@ -119,7 +121,7 @@
         <span class="pill">JavaScript</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/hxnx444/Travel-website" target="_blank" class="card-btn primary">View on GitHub ↗</a>
+        <a href="https://github.com/hxnx444/Travel-website" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
       </div>
     </div>
 
@@ -130,5 +132,10 @@
 
   </div>
 </main>
+
+<footer>
+  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2025 ✦</p>
+</footer>
+
 </body>
 </html>
