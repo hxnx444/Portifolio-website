@@ -8,14 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
   <script src="script.js" defer></script>
 </head>
 <body class="algorithms-page">
-
-<div class="bg-layer"></div>
+<div class="bg-layer" aria-hidden="true"></div>
 <div id="stars"></div>
-<div class="project-card" id="hotel-manager"></div>
+
 <header>
   <nav class="navbar">
     <a href="index.html" class="logo">Apps</a>
@@ -50,9 +48,9 @@
   <span class="section-label">projects</span>
   <div class="projects-grid">
 
-    <!-- Featured: Hotel System UI -->
-    <div class="project-card featured">
+    <div class="project-card featured" id="hotel-manager">
       <div class="card-left">
+        <div class="featured-badge">Featured</div>
         <span class="card-icon">🏨</span>
         <span class="card-tag">Hotel UI</span>
         <h2 class="card-title">Hotel System UI</h2>
@@ -101,8 +99,8 @@
       </div>
     </div>
 
-    <!-- Library Management -->
-    <div class="project-card">
+    <div class="project-card" id="library-system">
+     
       <span class="card-icon">📚</span>
       <span class="card-tag">Library System</span>
       <h2 class="card-title">Library Management System</h2>

@@ -8,12 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  
   <script src="script.js" defer></script>
 </head>
 <body class="algorithms-page">
-
-<div class="bg-layer"></div>
+<div class="bg-layer" aria-hidden="true"></div>
 <div id="stars"></div>
 
 <header>
@@ -34,8 +32,7 @@
 </header>
 
 <a href="projects.html" class="back-nav-btn">← Projects</a>
-<div class="project-card" id="aura-vision">
-<div class="project-card" id="travel-quest">
+
 <main class="page">
 
   <div class="page-header">
@@ -51,9 +48,9 @@
   <span class="section-label">projects</span>
   <div class="projects-grid">
 
-    <!-- Featured: Aura Vision -->
-    <div class="project-card featured">
+    <div class="project-card featured" id="aura-vision">
       <div class="card-left">
+        <div class="featured-badge">Featured</div>
         <span class="card-icon">🔮</span>
         <span class="card-tag">Full-Stack / UI</span>
         <h2 class="card-title">Aura Vision Board</h2>
@@ -102,8 +99,8 @@
       </div>
     </div>
 
-    <!-- Travel Quest -->
-    <div class="project-card">
+    <div class="project-card" id="travel-quest">
+     
       <span class="card-icon">✈️</span>
       <span class="card-tag">Frontend</span>
       <h2 class="card-title">Travel Quest</h2>

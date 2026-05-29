@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Hana Wael</title>
+  <meta name="description" content="Explore Hana Wael's projects — algorithms, desktop apps, websites, and UI/UX design.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
   <script src="script.js" defer></script>
 </head>
 <body class="dark-theme-page">
 
-<div class="bg-layer"></div>
-<div id="stars"></div>
+<div class="bg-layer" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"></div>
 
 <header>
-  <nav class="navbar">
-    <a href="index.html" class="logo">Projects</a>
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="Hana Wael — home">Projects</a>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-    <ul class="nav-links">
+    <ul class="nav-links" role="list">
       <li><a href="index.html#hero">Home</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#skills">Skills</a></li>
@@ -33,9 +33,8 @@
   </nav>
 </header>
 
-<section id="projects">
+<section id="projects" aria-label="Project categories">
 
-  <!-- Aesthetic Pixel Moon -->
   <div class="pixel-moon-wrapper" aria-hidden="true">
     <div class="pixel-moon"></div>
   </div>
@@ -43,34 +42,33 @@
   <p class="projects-heading">✦ Projects</p>
   <p class="projects-sub">Choose a category to explore my work.</p>
 
-  <div class="category-grid-container">
+  <div class="category-grid-container" role="list">
 
-    <a href="algorithms.html" class="category-card">
-      <span class="card-icon">🧠</span>
-      <h2 class="card-title">Algorithms & CS</h2>
+    <a href="algorithms.html" class="category-card" role="listitem">
+      <span class="card-icon" aria-hidden="true">🧠</span>
+      <h2 class="card-title">Algorithms &amp; CS</h2>
       <p class="card-desc">Automata, cryptography &amp; formal logic</p>
     </a>
 
-    <a href="apps.html" class="category-card">
-      <span class="card-icon">🖥️</span>
+    <a href="apps.html" class="category-card" role="listitem">
+      <span class="card-icon" aria-hidden="true">🖥️</span>
       <h2 class="card-title">Desktop Apps</h2>
       <p class="card-desc">Java business applications &amp; UI systems</p>
     </a>
 
-    <a href="websites.html" class="category-card">
-      <span class="card-icon">🌐</span>
+    <a href="websites.html" class="category-card" role="listitem">
+      <span class="card-icon" aria-hidden="true">🌐</span>
       <h2 class="card-title">Websites</h2>
       <p class="card-desc">Responsive frontends &amp; full-stack apps</p>
     </a>
 
-    <a href="design.html" class="category-card">
-      <span class="card-icon">🎨</span>
+    <a href="design.html" class="category-card" role="listitem">
+      <span class="card-icon" aria-hidden="true">🎨</span>
       <h2 class="card-title">UI / UX Design</h2>
       <p class="card-desc">Figma, wireframes &amp; prototypes</p>
     </a>
 
   </div>
-
 </section>
 
 <footer>
