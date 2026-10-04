@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Agent — Case Study | Hana Wael</title>
+  <meta name="description" content="Case study: a Flask app where a neural network predicts maze difficulty and an agent picks BFS or A* to solve it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="script.js" defer></script>
+</head>
+<body class="algorithms-page">
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="bg-layer"></div>
+<div id="stars"></div>
+
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">Case Study</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html#hero">Home</a></li>
+      <li><a href="apps.html">Apps</a></li>
+      <li><a href="websites.html">Websites</a></li>
+      <li><a href="design.html">Design</a></li>
+    </ul>
+  </nav>
+</header>
+
+<a href="algorithms.html#maze-agent" class="back-nav-btn">← Algorithms</a>
+
+<main class="page">
+
+  <div class="page-header">
+    <h1>🧩 Maze <span>Agent</span></h1>
+    <p class="subtitle">A neural network predicts how hard a maze is, then an agent picks the search algorithm it expects to work best — BFS or A*.</p>
+    <div class="pixel-divider">
+      <div class="line"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <span class="section-label">case study</span>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="card-left">
+        <span class="card-icon">🎯</span>
+        <span class="card-tag">The idea</span>
+        <h2 class="card-title">Let the agent choose</h2>
+        <p class="card-desc">
+          BFS and A* both solve a maze, but not equally well. On small mazes BFS is fine; on large, twisty ones A*'s heuristic saves a lot of work. I wanted a small agent that looks at a maze first, estimates the difficulty, and decides for itself, then explains why.
+        </p>
+        <div class="tech-pills">
+          <span class="pill">Python</span>
+          <span class="pill">Flask</span>
+          <span class="pill">scikit-learn</span>
+          <span class="pill">NumPy</span>
+          <span class="pill">JavaScript</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/hxnx444/Maze-Agent" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-right-title">// pipeline</div>
+        <div class="concept-row">
+          <span class="concept-icon">1️⃣</span>
+          <div class="concept-text"><strong>Generate</strong>Random maze (recursive backtracker) in one of 5 sizes, from 15×19 to 41×55.</div>
+        </div>
+        <div class="concept-row">
+          <span class="concept-icon">2️⃣</span>
+          <div class="concept-text"><strong>Measure</strong>Extract 5 features: size, wall density, start–goal distance, open cells, dead ends.</div>
+        </div>
+        <div class="concept-row">
+          <span class="concept-icon">3️⃣</span>
+          <div class="concept-text"><strong>Predict</strong>An MLP classifier labels it EASY, MEDIUM or HARD.</div>
+        </div>
+        <div class="concept-row">
+          <span class="concept-icon">4️⃣</span>
+          <div class="concept-text"><strong>Decide &amp; solve</strong>EASY → BFS, MEDIUM/HARD → A*. The agent runs it and shows its reasoning.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="card-icon">🧠</span>
+      <span class="card-tag">The model</span>
+      <h2 class="card-title">Small, honest ML</h2>
+      <p class="card-desc">
+        A scikit-learn MLPClassifier with two hidden layers (16 and 8 neurons), trained for 60 epochs on 900 balanced synthetic samples with an 80/20 stratified split.
+      </p>
+      <ul class="card-highlights">
+        <li>About 90% accuracy on the held-out test set (5 training runs: 89–92%)</li>
+        <li>Training log and confusion matrix shown in the UI</li>
+        <li>Most mistakes are MEDIUM vs HARD, the closest classes</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <span class="card-icon">⚠️</span>
+      <span class="card-tag">Limits</span>
+      <h2 class="card-title">What I'd be upfront about</h2>
+      <p class="card-desc">
+        The difficulty labels come from a hand-written scoring formula, not from measured solve times. So the network learns my formula, which makes this a demo of the pipeline rather than proof that the choice is optimal.
+      </p>
+      <ul class="card-highlights">
+        <li>State lives in server memory, so it runs as a single worker</li>
+        <li>Mazes are generated at fixed sizes only</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <span class="card-icon">🛣️</span>
+      <span class="card-tag">Next</span>
+      <h2 class="card-title">What I'd improve</h2>
+      <p class="card-desc">
+        Replace the formula with real labels by running both algorithms on thousands of mazes and recording which expands fewer nodes.
+      </p>
+      <ul class="card-highlights">
+        <li>Train on measured node counts instead of a formula</li>
+        <li>Add Dijkstra and greedy best-first to compare</li>
+        <li>Deploy a live demo</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2026 ✦</p>
+</footer>
+
+</body>
+</html>
