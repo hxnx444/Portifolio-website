@@ -1867,5 +1867,16 @@ footer {
   pointer-events: none;
   z-index: 0;
 }
+#services::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 173, 214, 0.50), rgba(90, 174, 255, 0.60), rgba(255, 173, 214, 0.50), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
 #services > * { position: relative; z-index: 1; }
+#services { isolation: isolate; overflow: hidden; }
+#services .skills-container { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 @media (max-width: 768px) { #services { padding-top: 80px; padding-bottom: 80px; } }
