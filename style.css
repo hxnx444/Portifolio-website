@@ -1845,3 +1845,27 @@ footer {
 .contact-qr { margin: 28px auto 0; text-align: center; }
 .contact-qr img { display: block; margin: 0 auto 10px; background: #fff; padding: 8px; border-radius: 12px; width: 140px; height: 140px; image-rendering: pixelated; }
 .contact-qr figcaption { font-family: "Space Mono", monospace; font-size: 11px; opacity: .75; }
+
+/* Services section: same layout as #skills so cards center and stay in bounds */
+#services {
+  position: relative;
+  z-index: 1;
+  padding: 110px 6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 55% at 15% 10%, rgba(255, 173, 214, 0.10) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 60% at 85% 80%, rgba(90, 174, 255, 0.12) 0%, transparent 60%),
+    rgba(6, 4, 15, 0.48);
+  pointer-events: none;
+  z-index: 0;
+}
+#services > * { position: relative; z-index: 1; }
+@media (max-width: 768px) { #services { padding-top: 80px; padding-bottom: 80px; } }

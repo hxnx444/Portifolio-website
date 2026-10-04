@@ -10,7 +10,7 @@ This website represents how I think about software:
 > But intuitive.
 
 🌐 **Live Website**
-https://hxnx444.github.io/Portifolio-website/
+https://hxnx444.github.io/Portfolio-website/
 
 ---
 
