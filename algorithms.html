@@ -39,7 +39,7 @@
 
   <div class="page-header">
     <h1>🧠 Algorithms &amp; <span>Computer Science</span></h1>
-    <p class="subtitle">Deep logic work — from formal language theory to cryptography. These projects prove I understand what's under the hood.</p>
+    <p class="subtitle">Deep logic work — from formal language theory and search algorithms to machine learning and cryptography. These projects prove I understand what's under the hood.</p>
     <div class="pixel-divider">
       <div class="line"></div>
       <div class="dot"></div><div class="dot"></div><div class="dot"></div>
@@ -110,6 +110,60 @@
       </div>
     </div>
 
+    <!-- Featured: Maze Agent -->
+    <div class="project-card featured" id="maze-agent">
+      <div class="card-left">
+        <div class="featured-badge">New</div>
+        <span class="card-icon">🧩</span>
+        <span class="card-tag">AI / Search Algorithms</span>
+        <h2 class="card-title">Maze Agent</h2>
+        <p class="card-desc">
+          A Flask web app where a neural network looks at a maze, predicts how hard it is, and an agent then chooses the search algorithm — BFS or A* — it expects to work best. Everything is visualized in the browser.
+        </p>
+        <ul class="card-highlights">
+          <li>Random maze generation with a recursive backtracker</li>
+          <li>MLP difficulty classifier (EASY / MEDIUM / HARD) trained on synthetic mazes</li>
+          <li>Agent explains why it picked BFS or A*</li>
+          <li>Compare explored nodes and path length for both algorithms</li>
+        </ul>
+        <div class="tech-pills">
+          <span class="pill">Python</span>
+          <span class="pill">Flask</span>
+          <span class="pill">scikit-learn</span>
+          <span class="pill">BFS</span>
+          <span class="pill">A*</span>
+          <span class="pill">JavaScript</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/hxnx444/Maze-Agent" target="_blank" rel="noopener" class="card-btn primary">View on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="card-right-title">// concepts used</div>
+        <div class="concept-row">
+          <span class="concept-icon">🧠</span>
+          <div class="concept-text">
+            <strong>Difficulty Prediction</strong>
+            Features like wall density, open cells, dead ends and start–goal distance feed a scikit-learn MLPClassifier.
+          </div>
+        </div>
+        <div class="concept-row">
+          <span class="concept-icon">🤖</span>
+          <div class="concept-text">
+            <strong>Algorithm Selection</strong>
+            The agent maps the predicted difficulty to BFS or A* and gives a plain-language reason.
+          </div>
+        </div>
+        <div class="concept-row">
+          <span class="concept-icon">🔍</span>
+          <div class="concept-text">
+            <strong>BFS vs A*</strong>
+            Compares uninformed search with a Manhattan-distance heuristic on the same maze.
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Encryption -->
     <div class="project-card">
       
@@ -170,7 +224,7 @@
 </main>
 
 <footer>
-  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2025 ✦</p>
+  <p>✦ crafted with pixels &amp; purpose by Hana Wael · 2026 ✦</p>
 </footer>
 
 </body>

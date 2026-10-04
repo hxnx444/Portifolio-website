@@ -1837,3 +1837,6 @@ footer {
   .navbar { padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right)); }
   body    { padding-bottom: env(safe-area-inset-bottom); }
 }
+/* 4-card featured grid: 2x2 on desktop, single column on mobile */
+.fp-grid.fp-grid-4 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 768px) { .fp-grid.fp-grid-4 { grid-template-columns: 1fr; } }

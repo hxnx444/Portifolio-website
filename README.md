@@ -27,38 +27,38 @@ I believe good UI should feel obvious.
 
 ### Programming
 
-* Java
-* Python
-* JavaScript
+- Java
+- Python
+- JavaScript
 
 ### Frontend
 
-* HTML
-* CSS
-* React
-* WordPress
-* JavaFX
+- HTML
+- CSS
+- React
+- WordPress
+- JavaFX
 
 ### UI / UX
 
-* Figma
-* Adobe XD
-* Pixel Art
-* HCI Principles
+- Figma
+- Adobe XD
+- Pixel Art
+- HCI Principles
 
 ### Backend
 
-* SQL
-* Node.js
-* OOP
-* Database Design
+- SQL
+- Node.js
+- OOP
+- Database Design
 
 ### Soft Skills
 
-* Problem Solving
-* Adaptability
-* Detail-Oriented Thinking
-* Patience
+- Problem Solving
+- Adaptability
+- Detail-Oriented Thinking
+- Patience
 
 ---
 
@@ -84,18 +84,18 @@ Full-stack personal growth platform with quests and progress tracking.
 
 ## 🛠️ Built With
 
-* HTML
-* CSS
-* JavaScript
-* Pixel UI Design Principles
+- HTML
+- CSS
+- JavaScript
+- Pixel UI Design Principles
 
 ---
 
 ## 📬 Contact
 
-* Email: [hanawaeltag12@gmail.com](mailto:hannahtag186@gmail.com)
-* GitHub: https://github.com/hxnx444
-* Instagram: https://www.instagram.com/hxnx_444/
+- Email: [hanawaeltag12@gmail.com](mailto:hanawaeltag12@gmail.com)
+- GitHub: https://github.com/hxnx444
+- Instagram: https://www.instagram.com/hxnx_444/
 
 ---
 
